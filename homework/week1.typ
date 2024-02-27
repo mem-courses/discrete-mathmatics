@@ -11,6 +11,8 @@
  date: "February 27, 2024",
 )
 
+= 1.1 Propositional Logic
+
 #hw("10")[
 	Let $p$ and $q$ be the propositions
 
@@ -130,4 +132,30 @@
 	(c) $2$
 
 	(d) $1$
+]
+
+= 1.2 Application of Propositional Logic
+
+#hw("6")[
+	You can upgrade your operating system only if you have a 32-bit processor running at 1 GHz or faster, at least 1 GB RAM, and 16 GB free hard disk space, or a 64-bit processor running at 2 GHz or faster, at least 2 GB RAM, and at least 32 GB free hard disk space. Express your answer in terms of u: “You can upgrade your operating system,” $b_32$: “You have a 32-bit processor,” $b_64$: “You have a 64-bit processor,” $g_1$: “Your processor runs at 1 GHz or faster,” $g_2$: “Your processor runs at 2 GHz or faster,” $r_1$: “Your processor has at least 1 GB RAM,” $r_2$: “Your processor has at least 2 GB RAM,” h16: “You have at least 16 GB free hard disk space,” and h32: “You have at least 32 GB free hard disk space.”
+][
+	
+]
+
+#hw("9")[
+	Are these system specifications consistent? “The system is in multiuser state if and only if it is operating normally. If the system is operating normally, the kernel is functioning. The kernel is not functioning or the system is in interrupt mode. If the system is not in multiuser state, then it is in interrupt mode. The system is not in interrupt mode.”
+][
+	
+]
+
+#hw("28")[
+	$A$ says “$C$ is the knave,” $B$ says “$A$ is the knight,” and $C$ says “I am the spy.”
+][
+	
+]
+
+#hw("39")[
+	A detective has interviewed four witnesses to a crime. From the stories of the witnesses the detective has concluded that if the butler is telling the truth then so is the cook; the cook and the gardener cannot both be telling the truth; the gardener and the handyman are not both lying; and if the handyman is telling the truth then the cook is lying. For each of the four witnesses, can the detective determine whether that person is telling the truth or lying? Explain your reasoning.
+][
+	
 ]
