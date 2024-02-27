@@ -96,7 +96,7 @@
 
 
 #hw("39(c)")[
-	Construct a truth table for each of these compound propositions.
+	Construct a truth table for each of this compound proposition.
 
 	$ (p -> q) or (not p -> r) $
 ][
@@ -159,3 +159,30 @@
 ][
 	
 ]
+
+= 1.3 Propositional Equivalences
+
+#hw("12(d)")[
+	Show that the conditional statement is a tautology by using truth tables.
+	$ [(p and q) or (p->r) or (q->r)] -> r $
+][]
+
+#hw("28")[
+	Show that $(p->q) and (p->r)$ and $p->(q and r)$ are logically equivalent.
+][]
+
+#hw("34")[
+	Show that $(p and q) or (not p and r) -> (q and r)$ is a tautology.
+][]
+
+#hw("45")[
+	Find a compound proposition involving the propositional variables $p$, $q$, and $r$ that is true when exactly two of $p$, $q$, and $r$ are true and is false otherwise. [Hint: Form a disjunction of conjunctions. Include a conjunction for each combination of values for which the compound proposition is true. Each conjunction should include each of the three propositional variables or its negations.]
+][]
+
+#hw("55")[
+	Find a compound proposition logically equivalent to $p -> q$ using only the logical operator $arrow.b$.
+][]
+
+#hw("63")[
+	How many of the disjunctions $p ∨ ¬q ∨ s$, $¬p ∨ ¬r ∨ s$, $¬p ∨ ¬r ∨ ¬s$, $¬p ∨ q ∨ ¬s$, $q ∨ r ∨ ¬s$, $q ∨ ¬r ∨ ¬s$, $¬p ∨ ¬q ∨ ¬s$, $p ∨ r ∨ s$, and $p ∨ r ∨¬s$ can be made simultaneously true by an assignment of truth values to $p$, $q$, $r$, and $s$?
+][]
