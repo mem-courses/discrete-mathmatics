@@ -1,6 +1,6 @@
 #let font_song = ("New Computer Modern", "Source Han Serif SC", "Simsun", "STSong")
 #let font_fangsong = ("FangSong", "STFangSong")
-#let font_hei = ("Source Han Sans SC", "Source Han Sans HW SC", "SimHei", "Microsoft YaHei", "STHeiti")
+#let font_hei = ("Calibri", "Source Han Sans SC", "Source Han Sans HW SC", "SimHei", "Microsoft YaHei", "STHeiti")
 #let font_kai = ("KaiTi_GB2312", "KaiTi", "STKaiti")
 
 #let definition_counter = state("definition_counter", 0)
@@ -149,7 +149,7 @@
   #it
   #v(1.2em)
   #fake_par#fake_par
-  #h(-2em)#strong[#hei[Solution]#h(0.5em)]
+  #h(-2em)#strong[#hei[Answer]#h(0.5em)]
   #jt
   #v(1em)
 ];fake_par}
