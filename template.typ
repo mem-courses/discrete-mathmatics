@@ -7,6 +7,7 @@
 #let theorem_counter = state("theorem_counter", 0)
 #let problem_counter = state("problem_counter", 0)
 
+#let indent = 2em
 #let fake_par = [#text()[#v(0pt, weak: true)];#text()[#h(0em)]]
 
 #let project(course: "", title: "", authors: (), date: none, body) = {
@@ -55,7 +56,7 @@
   // Set paragraph spacing.
   show par: set block(above: 0.8em, below: 0.8em)
 
-  set heading(numbering: "1.1)")
+  // set heading(numbering: "1.1)")
   set par(leading: 0.75em)
 
   // Title row.
@@ -88,6 +89,7 @@
   show heading.where(level: 1): it => [
     #definition_counter.update(x => 0)
     #theorem_counter.update(x => 0)
+    #set text(size: 1.15em)
     #it
   ]
 
@@ -96,8 +98,7 @@
     #it
   ]
 
-  set par(first-line-indent: 2em)
-  show heading: it => {text()[#v(1.6em, weak: true)];it;fake_par}
+  set par(first-line-indent: indent)
 
   body
 }
@@ -109,52 +110,18 @@
 
 #let bb = (it) => [#strong[#it]]
 
-#let definition(it) = {block(width: 100%)[
-  #definition_counter.update(x => (x + 1))
-  #strong[
-    #hei[定义]#locate(loc => [#counter(heading).at(loc).at(0)]).#definition_counter.display()
-  ]
-  #math.space#it
-];fake_par}
-
-#let theorem(it, name: "", tag: "定理") = {block(width: 100%)[
-  #theorem_counter.update(x => (x + 1))
-  #strong[
-    #hei[#tag]#locate(loc => [#counter(heading).at(loc).at(0).#counter(heading).at(loc).at(1)]).#theorem_counter.display()
-  ]
-  #if (name != "") [(#kai[#name])]
-  #math.space#it
-];fake_par}
-#let lemma(it, name: "") = theorem(it, name: name, tag: "引理")
-#let corollary(it, name: "") = theorem(it, name: name, tag: "推论")
-#let property(it, name: "") = theorem(it, name: name, tag: "性质")
-#let conclusion(it, name: "") = theorem(it, name: name, tag: "结论")
-
-#let problem(it, name: "") = {block(width: 100%)[
-  #problem_counter.update(x => (x + 1))
-  #strong[
-    #hei[例]#problem_counter.display()
-  ]
-  #if (name != "") [(#kai[#name])]
-  #math.space#it
-];fake_par}
-#let solution(it, tag: "解") = {block(width: 100%)[
-  #strong[#hei[#tag:]]
-  #math.space#it
-];fake_par}
-
 #let hw(name, it, jt) = {block(width: 100%)[
+  #v(0.4em)
   #problem_counter.update(x => (x + 1))
-  #strong[#hei[Problem #name]#h(0.5em)]
-  #it
-  #v(1.2em)
-  #fake_par#fake_par
-  #h(-2em)#strong[#hei[Answer]#h(0.5em)]
+  #strong[#hei[Problem #name:]]
+  #it#fake_par#fake_par
+  #v(0.2em)
+  #h(-indent)#strong[#hei[Answer:]]
   #jt
-  #v(1em)
-];fake_par}
+  #v(0.8em)
+]}
 
-#let named_block(it, name: "", color: red, inset: 11pt) = {block(
+#let named_block(it, name: "", color: red, inset: 11pt) = block(
   below: 1em, stroke: 0.5pt + color, radius: 3pt,
   width: 100%, inset: inset
 )[
@@ -169,9 +136,9 @@
   )
   #let fontcolor = color.darken(20%)
   #set text(fill: fontcolor)
-  #set par(first-line-indent: 0em)
+  #set par(first-line-indent_width: 0em)
   #it
-];fake_par}
+]
 
 #let example(it) = named_block(it, name: "Example", color: gray.darken(60%))
 #let proof(it) = named_block(it, name: "Proof", color: rgb(120, 120, 120))
