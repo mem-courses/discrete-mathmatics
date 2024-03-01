@@ -1,14 +1,17 @@
 #import "../template.typ": *
 
 #show: project.with(
-course: "Discrete Mathmatics",
-title: "Homework #1",
-authors: ((
-	name: "Yulun WU",
-	email: "memset0@outlook.com",
-	phone: "3230104585"
-),),
-date: "February 27, 2024",
+	course: "Discrete Mathmatics",
+	course_fullname: "Discrete Mathematics and Application",
+	course_code: "211B0010",
+	title: "Homework #1: Propositional Logic",
+	authors: ((
+		name: "Yulun WU",
+		email: "memset0@outlook.com",
+		id: "3230104585"
+	),),
+	semester: "Spring-Summer 2024",
+	date: "February 27, 2024",
 )
 
 #let TT = math.bold(math.upright("T"))
@@ -144,9 +147,9 @@ date: "February 27, 2024",
 
 	Express your answer in terms of $u$: “You can upgrade your operating system,” $b_32$: “You have a 32-bit processor,” $b_64$: “You have a 64-bit processor,” $g_1$: “Your processor runs at 1 GHz or faster,” $g_2$: “Your processor runs at 2 GHz or faster,” $r_1$: “Your processor has at least 1 GB RAM,” $r_2$: “Your processor has at least 2 GB RAM,” $h_16$: “You have at least 16 GB free hard disk space,” and $h_32$: “You have at least 32 GB free hard disk space.”
 ][
-	The corresponding logical equivalence is:
+	The proposition can be expressed as follows:
 	$
-	u equiv (b_32 and g_1 and r_1 and h_16) or (b_64 and g_2 and r_2 and h_32)
+	u -> (b_32 and g_1 and r_1 and h_16) or (b_64 and g_2 and r_2 and h_32)
 	$
 ]
 
@@ -162,7 +165,7 @@ date: "February 27, 2024",
 	- $r$ denotes "The kernel is functioning,"
 	- $s$ denotes "The system is in interrupt mode."
 
-	Then, the specifications can be written as:
+	Then, the specifications can be written as a proposition:
 	$
 	(p <-> q)
 	and (q -> r)
@@ -171,12 +174,9 @@ date: "February 27, 2024",
 	and not s 
 	$
 
-	As the logical value of this sentence is true, so $s$ shoule be false. At the same time, the implication $not p -> s$ holds true, so the $not p$ is false, and $p$ is true. 
-	Notice that $not r or s$ holds true, so we can obtain $not r or s equiv not r or FF equiv not r equiv TT$. So we  can know that $r$ is false.
+	As this proposition holds true, each part of this proposition should also be true. So we soon obtain that $s$ is false. And since the implication $not p -> s$ holds, $p$ should be true. 
 
-	Following the same logic before, we can obtain that $q$ is false. And since $p$ has the same logic value as $q$, we can infer that $p$ is also true, which does not conflict with the value we obtained before.
-
-	Substitute the obtained values into the logical variables *respectively(分别地；各自地)*, and it can be concluded that the original proposition is true. So we can make the conclusion that the system specifications are consistent.
+	Next, notice that $not r or s equiv not r or FF equiv not r equiv TT$, so $r$ is false. And also, $q$ is false. After that, based on $p <-> q$ holding true, we can infer that $p$ shoule be false, which is a contradiction. So we can conclude that the system specifications are not consistent.
 ]
 
 Exercises 28–35 relate to inhabitants of an island on which there are three kinds of people: knights who always tell the truth, knaves who always lie, and spies (called normals by Smullyan [Sm78]) who can either lie or tell the truth. You encounter three people, A, B, and C. You know one of these people is a knight, one is a knave, and one is a spy. Each of the three people knows the type of person each of other two is. For each of these situations, if possible, determine whether there is a unique solution and determine who the knave, knight, and spy are. When there is no *unique(唯一的)* solution, list all possible solutions or state that there are no solutions.

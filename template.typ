@@ -10,7 +10,17 @@
 #let indent = 2em
 #let fake_par = [#text()[#v(0pt, weak: true)];#text()[#h(0em)]]
 
-#let project(course: "", title: "", authors: (), date: none, body) = {
+#let project(
+  course: "", title: "", authors: (), date: none, body,
+  course_fullname: "", semester: "", course_code: "",
+) = {
+  if (course_fullname == "") {
+    course_fullname = course
+  }
+  if (course_code != "") {
+    course_fullname = course_fullname + " (" + course_code + ")"
+  }
+
   // 文档基本信息
   set document(author: authors.map(a => a.name), title: title)
   set page(
@@ -28,7 +38,7 @@
       grid(
         columns: (1fr, 1fr, 1fr),
         align(left, course),
-        align(center, title),
+        []/* align(center, title)*/,
         align(right, date),
       )
       
@@ -59,28 +69,29 @@
   // set heading(numbering: "1.1)")
   set par(leading: 0.75em)
 
-  // Title row.
-  align(center)[
-    #block(text(weight: 700, 1.5em, [#title]))
-    #v(1.1em, weak: true)
+  block(
+    below: 1em, stroke: 0.5pt + black, radius: 2pt,
+    width: 100%, inset: 1em, outset: -0.2em
+  )[
+    #text(size: 0.84em)[#grid(
+      columns: (auto, 1fr, auto),
+      align(left, strong(course_fullname)),
+      [],
+      align(right, strong(semester)),
+    )]
+    #v(0.5em)
+    #align(center)[#text(size: 1.5em)[#title]]
+    #v(0.5em)
+    #block(..authors.map(author => align(center)[
+      #text(size: 0.84em)[#grid(
+        columns: (auto, 1fr, auto),
+        align(left, author.name + " (" + author.id +")"),
+        [],
+        align(right, author.email),
+      )]
+    ]))
   ]
 
-  // Author information.
-  pad(
-    top: 0.8em,
-    bottom: 0.8em,
-    x: 2em,
-    grid(
-      columns: (1fr,) * calc.min(3, authors.len()),
-      gutter: 1em,
-      ..authors.map(author => align(center)[
-        *#author.name* \
-        #author.email \
-        #author.phone
-      ]),
-    ),
-  )
-  
   // Main body.
   set par(justify: true)
 
@@ -89,8 +100,9 @@
   show heading.where(level: 1): it => [
     #definition_counter.update(x => 0)
     #theorem_counter.update(x => 0)
-    #set text(size: 1.15em)
+    #set text(size: 1.2em)
     #it
+    #v(0.15em)
   ]
 
   show heading.where(level: 2): it => [
@@ -111,14 +123,14 @@
 #let bb = (it) => [#strong[#it]]
 
 #let hw(name, it, jt) = {block(width: 100%)[
-  #v(0.4em)
+  #v(0.3em)
   #problem_counter.update(x => (x + 1))
   #strong[#hei[Problem #name:]]
   #it#fake_par#fake_par
   #v(0.2em)
   #h(-indent)#strong[#hei[Answer:]]
   #jt
-  #v(0.8em)
+  #v(0.6em)
 ]}
 
 #let named_block(it, name: "", color: red, inset: 11pt) = block(
