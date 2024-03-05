@@ -79,9 +79,9 @@
       [],
       align(right, strong(semester)),
     )]
-    #v(0.5em)
+    #v(0.75em)
     #align(center)[#text(size: 1.5em)[#title]]
-    #v(0.5em)
+    #v(0.75em)
     #block(..authors.map(author => align(center)[
       #text(size: 0.84em)[#grid(
         columns: (auto, 1fr, auto),
@@ -123,14 +123,14 @@
 #let bb = (it) => [#strong[#it]]
 
 #let hw(name, it, jt) = {block(width: 100%)[
-  #v(0.3em)
+  #v(0.4em)
   #problem_counter.update(x => (x + 1))
   #strong[#hei[Problem #name:]]
   #it#fake_par#fake_par
   #v(0.2em)
   #h(-indent)#strong[#hei[Answer:]]
   #jt
-  #v(0.6em)
+  #v(0.8em)
 ]}
 
 #let named_block(it, name: "", color: red, inset: 11pt) = block(
@@ -171,3 +171,6 @@
 #let bug(it) = named_block(it, name: "Bug", color: rgb(204, 51, 153))
 #let quote(it) = named_block(it, name: "Quote", color: rgb(132, 90, 231))
 #let cite(it) = named_block(it, name: "Cite", color: rgb(132, 90, 231))
+
+#let TT = math.bold(math.upright("T"))
+#let FF = math.bold(math.upright("F"))

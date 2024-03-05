@@ -14,9 +14,6 @@
 	date: "February 27, 2024",
 )
 
-#let TT = math.bold(math.upright("T"))
-#let FF = math.bold(math.upright("F"))
-
 = 1.1 Propositional Logic
 
 #hw("10")[
@@ -179,7 +176,7 @@
 	Next, notice that $not r or s equiv not r or FF equiv not r equiv TT$, so $r$ is false. And also, $q$ is false. After that, based on $p <-> q$ holding true, we can infer that $p$ shoule be false, which is a contradiction. So we can conclude that the system specifications are not consistent.
 ]
 
-Exercises 28–35 relate to inhabitants of an island on which there are three kinds of people: knights who always tell the truth, knaves who always lie, and spies (called normals by Smullyan [Sm78]) who can either lie or tell the truth. You encounter three people, A, B, and C. You know one of these people is a knight, one is a knave, and one is a spy. Each of the three people knows the type of person each of other two is. For each of these situations, if possible, determine whether there is a unique solution and determine who the knave, knight, and spy are. When there is no *unique(唯一的)* solution, list all possible solutions or state that there are no solutions.
+\ Exercises 28–35 relate to inhabitants of an island on which there are three kinds of people: knights who always tell the truth, knaves who always lie, and spies (called normals by Smullyan [Sm78]) who can either lie or tell the truth. You encounter three people, A, B, and C. You know one of these people is a knight, one is a knave, and one is a spy. Each of the three people knows the type of person each of other two is. For each of these situations, if possible, determine whether there is a unique solution and determine who the knave, knight, and spy are. When there is no *unique(唯一的)* solution, list all possible solutions or state that there are no solutions.
 
 #hw("28")[
 	$A$ says "$C$ is the knave," $B$ says "$A$ is the knight," and $C$ says "I am the spy."
