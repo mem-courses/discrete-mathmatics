@@ -50,7 +50,7 @@
 	&equiv not p or (q and r)\
 	&equiv p->(q and r)
 	$
-	So $(p->q) and (p->r)$ and $p->(q and r)$ are logically equivalent.
+	Overall, logical propositions $(p->q) and (p->r)$ and $p->(q and r)$ are logically equivalent.
 ]
 
 #hw("34")[
@@ -75,9 +75,9 @@
 	
 	Hint: Form a disjunction of conjunctions. Include a conjunction for each combination of values for which the compound proposition is true. Each conjunction should include each of the three propositional variables or its negations.
 ][
-	My answer is:
+	Here my answer is:
 	$
-	not (p and q and r) and ((p and q) or (p and r) or (q and r))
+	not (p and q and r) and [(p and q) or (p and r) or (q and r)]
 	$
 ]
 
@@ -89,6 +89,7 @@
 #hw("55")[
 	Find a compound proposition logically equivalent to $p -> q$ using only the logical operator $arrow.b$.
 ][
+	Since $p equiv p or p$, we have $not p equiv p arrow.b p$. So there is:
 	$
 	p->q
 	&equiv not p or q\
@@ -100,26 +101,35 @@
 #hw("63")[
 	How many of the disjunctions $p or not q or s$, $not p or not r or s$, $not p or not r or not s$, $not p or q or not s$, $q or r or not s$, $q or not r or not s$, $not p or not q or not s$, $p or r or s$, and $p or r or not s$ can be made *simultaneously(同时地)* true by an assignment of truth values to $p$, $q$, $r$, and $s$?
 ][
-	Let's discuss in cases:
-
-	- If $s$ is true, the three ones of given propositions hold true. Only $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, and $p or r$ need to be considered. We can list a truth table:
-	
 	#let T = [T]
 	#let F = [F]
-	#table(
-		columns: (1fr, 1fr, 1fr, 2fr, 2fr, 2fr, 2fr, 2fr, 2fr),
-		inset: 5pt,
-		align: horizon + center,
-		$p$, $q$, $r$, $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, $p or r$,
-		T, T, T, F, T, T, T, F, T,
-		T, T, F, T, T, T, T, F, T,
-		T, F, T, F, F, T, F, T, T,
-		T, F, F, T, F, F, T, T, T,
-		F, T, T, T, F, T, T, T, T,
-		F, T, F, T, F, T, T, T, F,
-		F, F, T, T, T, T, F, T, T,
-		F, F, F, T, T, F, T, T, F,
-	)
+
+	Let's discuss in cases:
+
+	- #[
+		If $s$ is true, there are three propositions in the given statement always hold true. Only $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, and $p or r$ need to be considered. We can list a truth table:
+	
+		#table(
+			columns: (1fr, 1fr, 1fr, 2fr, 2fr, 2fr, 2fr, 2fr, 2fr),
+			inset: 5pt,
+			align: horizon + center,
+			$p$, $q$, $r$, $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, $p or r$,
+			T, T, T, F, T, T, T, F, T,
+			T, T, F, T, T, T, T, F, T,
+			T, F, T, F, F, T, F, T, T,
+			T, F, F, T, F, F, T, T, T,
+			F, T, T, T, F, T, T, T, T,
+			F, T, F, T, F, T, T, T, F,
+			F, F, T, T, T, T, F, T, T,
+			F, F, F, T, T, F, T, T, F,
+		)
+
+		From the truth table, we can observe that at most 5 logical propositions can be true at the same time. So there are $8=3+5$ logical propositions hold true in total when $p,q,s$ is true and $r$ is false.
+	]
+
+	- #[
+		If $s$ is false, there are six propositions in the given statement always hold true. Only $p or not q$, $not p or not r$ and $p or r$ need to be considered.
+	]
 ]
 
 = 1.4 Predicates and Quantifiers

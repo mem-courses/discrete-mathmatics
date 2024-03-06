@@ -33,18 +33,26 @@
   // 页眉
   set page(
     header: {
-      set text(font: font_song, 10pt, baseline: 8pt, spacing: 3pt)
+      locate(loc => {
+        if (counter(page).at(loc).at(0) == 1) {
+          return none
+        }
 
-      grid(
-        columns: (1fr, 1fr, 1fr),
-        align(left, course),
-        []/* align(center, title)*/,
-        align(right, date),
-      )
-      
-      line(length: 100%, stroke: 0.5pt)
+        set text(font: font_song, 10pt, baseline: 8pt, spacing: 3pt)
+
+        grid(
+          columns: (1fr, 1fr, 1fr),
+          align(left, course),
+          []/* align(center, title)*/,
+          align(right, date),
+        )
+        
+        line(length: 100%, stroke: 0.5pt)
+      })
     }
   )
+
+
 
   // 页脚
   set page(
@@ -55,7 +63,7 @@
       grid(
         columns: (1fr, 1fr),
         align(left, authors.map(a => a.name).join(", ")),
-        align(right, counter(page).display("1")),
+        align(right, counter(page).display("1/1", both: true)),
       )
     }
   )
@@ -70,7 +78,7 @@
   set par(leading: 0.75em)
 
   block(
-    below: 1em, stroke: 0.5pt + black, radius: 2pt,
+    below: 4em, stroke: 0.5pt + black, radius: 2pt,
     width: 100%, inset: 1em, outset: -0.2em
   )[
     #text(size: 0.84em)[#grid(

@@ -81,8 +81,6 @@
 ]
 
 
-
-
 #hw("18")[
 	Determine whether these biconditionals are true or false.
 
