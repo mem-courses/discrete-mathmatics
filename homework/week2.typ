@@ -1,4 +1,5 @@
 #import "../template.typ": *
+#import "../functions.typ": *
 
 #show: project.with(
 	course: "Discrete Mathmatics",

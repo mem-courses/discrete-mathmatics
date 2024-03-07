@@ -179,6 +179,3 @@
 #let bug(it) = named_block(it, name: "Bug", color: rgb(204, 51, 153))
 #let quote(it) = named_block(it, name: "Quote", color: rgb(132, 90, 231))
 #let cite(it) = named_block(it, name: "Cite", color: rgb(132, 90, 231))
-
-#let TT = math.bold(math.upright("T"))
-#let FF = math.bold(math.upright("F"))
