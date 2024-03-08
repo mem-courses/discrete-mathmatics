@@ -15,7 +15,26 @@
 	date: "February 27, 2024",
 )
 
+#let T = [T]
+#let F = [F]
+
 = 1.1 Propositional Logic
+
+#hw("2")[
+	Which of these are propositions? What are the truth values of those that are propositions?
+	
+	(a) Do not pass go.
+	
+	(b) What time is it?
+	
+	(d) $4 + x = 5$.
+	
+	(e) The moon is made of green cheese.
+	
+	(f) $2^n >= 100$.
+][
+  (e) and (f) are propositions, and the truth values of them are false and true.
+]
 
 #hw("10")[
 	Let $p$ and $q$ be the propositions
@@ -26,6 +45,8 @@
 
 	Express each of these propositions as an English sentence.
 
+	(e) $p<->q$
+
 	(f) $not p -> not q$
 
 	(g) $not p and not q$
@@ -33,6 +54,8 @@
 	(h) $not p or (p and q)$
 ][
 	These propositions can be expressed as follows：
+
+	(e) I brought a lottery ticket this week is and only if I won the million dollar jackpot.
 
 	(f) if I didn't buy a lottery ticket this week, then I will not win the million dollar jackpot.
 
@@ -96,6 +119,91 @@
 	The value of these four biconditionals is TFTF.
 ]
 
+#hw("20(c)")[
+	Determine whether each of these conditional statements is true or false.
+
+	(c) If $1 + 1 = 2$, then dogs can fly.
+][
+	The proposition $1+1=2$ is true, but the proposition "dogs can fly" is false. So this conditional statement is false.
+]
+
+#hw("24")[
+	Write each of these statements in the form "if p, then q" in English. [Hint: Refer to the list of common ways to express conditional statements provided in this section.]
+	
+	(a) It is necessary to wash the boss’s car to get promoted.
+	
+	(b) Winds from the south imply a spring thaw.
+	
+	(c) A *sufficient(充分的)* condition for the warranty to be good is that you bought the computer less than a year ago.
+	
+	(d) Willy gets caught whenever he cheats.
+	
+	(e) You can access the website only if you pay a subscription fee.
+	
+	(f) Getting elected *follows from(由……引起)* knowing the right people.
+	
+	(g) Carol gets seasick whenever she is on a boat.
+][
+	(a) If someone washes the boss's car, then he is able to get promoted.
+
+	(b) If there are winds from the south, then the spring is going to be thaw.
+
+	(c) If you bought the computer more than a year ago, then your warranty is not good.
+
+	(d) If Willy cheats, then he will be caught.
+
+	(e) If you pay a subscription fee, then you can access the website.
+
+	(f) If someone gets elected, then he or she has known the right people.
+
+	(g) If Carol is on a boat, then she will get seasick.
+]
+
+#hw("30")[
+	State the converse, contrapositive, and inverse of each of these conditional statements.
+	
+	(a) If it snows tonight, then I will stay at home.
+	
+	(b) I go to the beach whenever it is a sunny summer day.
+	
+	(c) When I stay up late, it is necessary that I sleep until noon.
+][
+	For the statement (a):
+
+	- converse: If I stay at home, then it will snow tonight.
+	- inverse: If it doesn't snow tonight, then I will not stay at home.
+	- contrapositive: If I don't stay at home, then it will not snow tonight.
+
+	The the statement (b) can be represent as "If it is a sunny summer day, then I will go to beach", and its
+
+	- converse: If I go to beach, then it will be a sunny summer day.
+	- inverse: If it isn't a sunny summer day, then I will not go to beach.
+	- contrapositive: If I don't go to beach, then it will not be a sunny summer day.
+
+	The the statement (c) can be represent as "If I stay up late, then I will sleep until noon."
+
+	- converse: If I sleep until noon, then I stayed up late (last night).
+	- inverse: If I don't stay up late, then I will not sleep until noon. 
+	- contrapositive: If I don't sleep until noon, then I didn't stay up late (last night).
+]
+
+#hw("34(f)")[
+	Construct a truth table for each of the compound propositions $(p ↔ q) ⊕ (p ↔ ¬q)$.
+][
+	The truth table is as follows:
+
+	#table(
+		columns: (1fr, 1fr, 2fr, 2fr, 4fr),
+		align: horizon + center,
+		inset: 5pt,
+		stroke: 0.5pt,
+		$p$, $q$, $p<->q$, $p<->not q$, $(p ↔ q) ⊕ (p ↔ ¬q)$,
+		T, T, T, F, T, 
+		T, F, F, T, T, 
+		F, T, F, T, T, 
+		F, F, T, F, T, 
+	)
+]
 
 #hw("39(c)")[
 	Construct a truth table for each of this compound proposition:
@@ -104,11 +212,10 @@
 ][
 	The truth table is as follows:
 
-	#let T = [T]
-	#let F = [F]
 	#table(
 		columns: (1fr, 1fr, 1fr, 2fr, 2fr, 3fr),
 		inset: 5pt,
+		stroke: 0.5pt,
 		align: horizon + center,
 		$p$, $q$, $r$, $p -> q$, $not p -> r$, $(p -> q) or (not p -> r)$,
 		T, T, T, T, T, T,
@@ -136,12 +243,38 @@
 	(d) $1$
 ]
 
+\
+
+*Fuzzy logic* is used in artificial intelligence. In fuzzy logic, a proposition has a truth value that is a number between 0 and 1, inclusive. A proposition with a truth value of 0 is false and one with a truth value of 1 is true. Truth values that are between 0 and 1 indicate varying degrees of truth. For instance, the truth value 0.8 can be assigned to the statement “Fred is happy,” because Fred is happy most of the time, and the truth value 0.4 can be assigned to the statement “John is happy,” because John is happy slightly less than half the time. Use these truth values to solve Exercises 49–51.
+
+#hw("50")[
+	The truth value of the conjunction of two propositions in fuzzy logic is the minimum of the truth values of the two propositions. What are the truth values of the statements
+	
+	"Fred and John are happy" and "Neither Fred nor John is happy"?
+][
+	Let $x$ denotes the truth value of "Fred is happy", and $y$ denotes the truth value of "John is happy". So the statement "Fred and John are happy" can be represent as
+	$
+	x and y,
+	$
+	so its truth value is $min(x,y) = 0.4$. And the statement "Neither Fred nor John is happy" can be represent as
+	$
+	not x and not y, 
+	$
+	so its truth value is $min(1-x,1-y) = 0.2$.
+]
+
+#hw("52")[
+	 Is the assertion "This statement is false" a proposition?
+][
+	Let's assume it is a proposition. If it holds true, then "this statement is false" is false. So this is a paradox and cannot be referred to as a proposition.
+]
+
 = 1.2 Application of Propositional Logic
 
 #hw("6")[
 	You can upgrade your operating system only if you have a 32-bit processor running at 1 GHz or faster, at least 1 GB RAM, and 16 GB free hard disk space, or a 64-bit processor running at 2 GHz or faster, at least 2 GB RAM, and at least 32 GB free hard disk space.
 
-	Express your answer in terms of $u$: “You can upgrade your operating system,” $b_32$: “You have a 32-bit processor,” $b_64$: “You have a 64-bit processor,” $g_1$: “Your processor runs at 1 GHz or faster,” $g_2$: “Your processor runs at 2 GHz or faster,” $r_1$: “Your processor has at least 1 GB RAM,” $r_2$: “Your processor has at least 2 GB RAM,” $h_16$: “You have at least 16 GB free hard disk space,” and $h_32$: “You have at least 32 GB free hard disk space.”
+	Express your answer in terms of $u$: "You can upgrade your operating system," $b_32$: "You have a 32-bit processor," $b_64$: "You have a 64-bit processor," $g_1$: "Your processor runs at 1 GHz or faster," $g_2$: "Your processor runs at 2 GHz or faster," $r_1$: "Your processor has at least 1 GB RAM," $r_2$: "Your processor has at least 2 GB RAM," $h_16$: "You have at least 16 GB free hard disk space," and $h_32$: "You have at least 32 GB free hard disk space."
 ][
 	The proposition can be expressed as follows:
 	$
@@ -152,7 +285,7 @@
 #hw("9")[
 	Are these system specifications consistent?
 
-	“The system is in multiuser state if and only if it is operating normally. If the system is operating normally, the kernel is functioning. The kernel is not functioning or the system is in interrupt mode. If the system is not in multiuser state, then it is in interrupt mode. The system is not in interrupt mode.”
+	"The system is in multiuser state if and only if it is operating normally. If the system is operating normally, the kernel is functioning. The kernel is not functioning or the system is in interrupt mode. If the system is not in multiuser state, then it is in interrupt mode. The system is not in interrupt mode."
 ][
 	Let's assume these logical variables to represent original sentence parts:
 
@@ -251,4 +384,195 @@
 	- If $c$ is false, the value of $b$ must be true; and the value of $g$ and $h$ are not limited as long as $g and h$ is true holds.
 
 	We can conclude that the cook is lying, the butler is always telling the truth,  one of the gardener and the handyman is telling the truth (since $g or h$ is true), but we can't determine whether he is the gardener or the handyman.
+]
+
+
+
+= 1.3 Propositional Equivalences
+
+#hw("6")[
+	Use a truth table to verify the first De Morgan law $not (p and q) equiv not p or not q$.
+][
+	The truth table is as follows:
+
+	#table(
+		columns: (1fr, 1fr, 2fr, 2fr),
+		$p$, $q$, $not (p and q)$, $not p or not q$,
+		T, T, F, F,
+		T, F, T, T,
+		F, T, T, T,
+		F, F, T, T,
+	)
+
+	From this, we can prove that De Morgan's Laws are correct.
+]
+
+#hw("8")[
+	Use De Morgan’s laws to find the negation of each of the following statements.
+
+	(a) Kwame will take a job in industry or go to graduate school.
+	
+	(b) Yoshiko knows Java and calculus.
+][
+	The negation of these two statements are:
+
+	(a) Kwame will not take a job in industry and will not go to graduate school.
+
+	(b) Yoshiko doesn't know Java or calculus.
+]
+
+#hw("12(d)")[
+	Show that the conditional statement is a tautology by using truth tables.
+	$ [(p or q) and (p->r) and (q->r)] -> r $
+][
+	The truth table is as follows:
+	#let T = [T]
+	#let F = [F]
+	#table(
+		columns: (1fr, 1fr, 1fr, 2fr, 2fr, 2fr, 5fr),
+		$r$, $p$, $q$, $p->r$, $q->r$, $p or q$, $(p or q) and (p->r) and (q->r)$,
+		T, T, T, T, T, T, T,
+		T, T, F, T, T, T, T,
+		T, F, T, T, T, T, T,
+		T, F, F, T, T, F, F,
+		F, T, T, F, F, T, F,
+		F, T, F, F, T, T, F,
+		F, F, T, T, F, T, F,
+		F, F, F, T, T, F, F,
+	)
+
+	As the truth table shows, the compound proposition $[(p or q) and (p->r) and (q->r)] -> r$ always holds, so it is a tautology.
+]
+
+#hw("16(b)")[
+	Show that each conditional statement in Exercise 12 is a tautology by applying a chain of logical identities as in Example 8. (Do not use truth tables.)
+
+	\* The conditional statement from Exercise 12 is:
+
+	$ [(p -> q) and (q -> r)] -> (p -> r) $
+][
+	$
+	[(p -> q) and (q -> r)] -> (p -> r)
+	&equiv not [(not p or q) and (not q or r)] or (not p or r)\
+	&equiv not (not p or q) or not (not q or r) or (not p or r)\
+	&equiv (p and not q) or (q and not r) or not p or r\
+	&equiv [(p and not q) or not p] or [(q and not r) or r]\
+	&equiv (not q or not p) or (q or r)\
+	&equiv not p or (q or not q) or r\
+	&equiv not p or TT or r\
+	&equiv TT
+	$
+	So the given conditional statement is a tautology.
+]
+
+#hw("28")[
+	Show that $(p->q) and (p->r)$ and $p->(q and r)$ are logically equivalent.
+][
+	$
+	(p->q) and (p->r)
+	&equiv (not p or q) and (not p or r)\
+	&equiv not p or (q and r)\
+	&equiv p->(q and r)
+	$
+	Overall, logical propositions $(p->q) and (p->r)$ and $p->(q and r)$ are logically equivalent.
+]
+
+#hw("34")[
+	Show that $(p or q) and (not p or r) -> (q or r)$ is a tautology.
+][
+	$
+	(p or q) and (not p or r) -> (q or r)
+	&equiv not (p or q) or not (not p or r) or (q or r)\
+	&equiv (not p and not q) or (p and not r) or q or r\
+	&equiv ((not p or p) and (not q or p) and (not p or not r) and (not q or not r)) or q or r\
+	&equiv (TT and (not q or p) and (not p or not r) and (not q or not r)) or q or r\
+	&equiv ((not q or p) and (not p or not r) and (not q or not r)) or q or r\
+	&equiv (not q or p or q or r) and (not p or not r or q or r) and (not q or not r or q or r)\
+	&equiv TT and TT and TT\
+	&equiv TT
+	$
+	So this compound proposition is a tautology.
+]
+
+#hw("36")[
+	Show that $(p ∧ q) → r$ and $(p → r) ∧ (q → r)$ are not logically equivalent.
+][
+	On the one hard,
+	$
+	(p and q) -> r
+	&equiv not (p and q) or r\
+	&equiv not p or not q or r\
+	$
+	On the other hand,
+	$
+	(p->r) and (q->r)
+	&equiv (not p or r) and (not q or r)\
+	&equiv (not p and not q) or r\
+	&equiv not (p or q) or r\
+	$
+	It's obvious that when $p$ is true, $q$ is false and $r$ is false, the proposition $not p or not q or r$ holds true while $not (p or q) or r$ holds false. So the given two logical propositions are not logically equivalent.
+]
+
+#hw("44")[
+	Find a compound proposition involving the propositional variables $p$, $q$, and $r$ that is true when $p$ and $q$ are true and $r$ is false, but is false otherwise. [Hint: Use a conjunction of each propositional variable or its negation.]
+][
+	The answer is
+	$ p and q and not r $
+]
+
+#hw("45")[
+	Find a compound proposition *involving(包含)* the propositional variables $p$, $q$, and $r$ that is true when exactly two of $p$, $q$, and $r$ are true and is false otherwise.
+	
+	Hint: Form a disjunction of conjunctions. Include a conjunction for each combination of values for which the compound proposition is true. Each conjunction should include each of the three propositional variables or its negations.
+][
+	Here my answer is:
+	$
+	not (p and q and r) and [(p and q) or (p and r) or (q and r)]
+	$
+]
+
+#let NAND = math.italic("NAND")
+#let NOR = math.italic("NOR")
+
+\ We now present a group of exercises that involve the logical operators $NAND$ and $NOR$. The proposition $p NAND q$ is true when either $p$ or $q$, or both, are false; and it is false when both $p$ and $q$ are true. The proposition $p NOR q$ is true when both $p$ and $q$ are false, and it is false otherwise. The propositions $p NAND q$ and $p NOR q$ are denoted by $p|q$ and $p arrow.b q$, respectively. (The operators and $arrow.b$ are called the Sheffer stroke and the Peirce arrow after H. M. Sheffer and C. S. Peirce, respectively.)
+
+#hw("55")[
+	Find a compound proposition logically equivalent to $p -> q$ using only the logical operator $arrow.b$.
+][
+	Since $p equiv p or p$, we have $not p equiv p arrow.b p$. So there is:
+	$
+	p->q
+	&equiv not p or q\
+	&equiv not ((p arrow.b p) arrow.b q)\
+	&equiv ((p arrow.b p) arrow.b q) arrow.b ((p arrow.b p) arrow.b q)
+	$
+]
+
+#hw("63")[
+	How many of the disjunctions $p or not q or s$, $not p or not r or s$, $not p or not r or not s$, $not p or q or not s$, $q or r or not s$, $q or not r or not s$, $not p or not q or not s$, $p or r or s$, and $p or r or not s$ can be made *simultaneously(同时地)* true by an assignment of truth values to $p$, $q$, $r$, and $s$?
+][
+	Let's discuss in cases:
+
+	- #[
+		If $s$ is true, there are three propositions in the given statement always hold true. Only $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, and $p or r$ need to be considered. We can list a truth table:
+	
+		#table(
+			columns: (1fr, 1fr, 1fr, 2fr, 2fr, 2fr, 2fr, 2fr, 2fr),
+			$p$, $q$, $r$, $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, $p or r$,
+			T, T, T, F, T, T, T, F, T,
+			T, T, F, T, T, T, T, F, T,
+			T, F, T, F, F, T, F, T, T,
+			T, F, F, T, F, F, T, T, T,
+			F, T, T, T, F, T, T, T, T,
+			F, T, F, T, F, T, T, T, F,
+			F, F, T, T, T, T, F, T, T,
+			F, F, F, T, T, F, T, T, F,
+		)
+
+		From the truth table, we can observe that at most 5 logical propositions can be true at the same time. So there are $8=3+5$ logical propositions hold true in total when $p,q,s$ is true and $r$ is false.
+	]
+
+	- #[
+		If $s$ is false, there are six propositions in the given statement always hold true. Only $p or not q$, $not p or not r$ and $p or r$ need to be considered.
+	]
 ]

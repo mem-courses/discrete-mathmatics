@@ -15,124 +15,6 @@
 	date: "March 2, 2024",
 )
 
-= 1.3 Propositional Equivalences
-
-#hw("12(d)")[
-	Show that the conditional statement is a tautology by using truth tables.
-	$ [(p or q) and (p->r) and (q->r)] -> r $
-][
-	The truth table is as follows:
-	#let T = [T]
-	#let F = [F]
-	#table(
-		columns: (1fr, 1fr, 1fr, 2fr, 2fr, 2fr, 5fr),
-		inset: 5pt,
-		align: horizon + center,
-		$r$, $p$, $q$, $p->r$, $q->r$, $p or q$, $(p or q) and (p->r) and (q->r)$,
-		T, T, T, T, T, T, T,
-		T, T, F, T, T, T, T,
-		T, F, T, T, T, T, T,
-		T, F, F, T, T, F, F,
-		F, T, T, F, F, T, F,
-		F, T, F, F, T, T, F,
-		F, F, T, T, F, T, F,
-		F, F, F, T, T, F, F,
-	)
-
-	As the truth table shows, the compound proposition $[(p or q) and (p->r) and (q->r)] -> r$ always holds, so it is a tautology.
-]
-
-#hw("28")[
-	Show that $(p->q) and (p->r)$ and $p->(q and r)$ are logically equivalent.
-][
-	$
-	(p->q) and (p->r)
-	&equiv (not p or q) and (not p or r)\
-	&equiv not p or (q and r)\
-	&equiv p->(q and r)
-	$
-	Overall, logical propositions $(p->q) and (p->r)$ and $p->(q and r)$ are logically equivalent.
-]
-
-#hw("34")[
-	Show that $(p or q) and (not p or r) -> (q or r)$ is a tautology.
-][
-	$
-	(p or q) and (not p or r) -> (q or r)
-	&equiv not (p or q) or not (not p or r) or (q or r)\
-	&equiv (not p and not q) or (p and not r) or q or r\
-	&equiv ((not p or p) and (not q or p) and (not p or not r) and (not q or not r)) or q or r\
-	&equiv (TT and (not q or p) and (not p or not r) and (not q or not r)) or q or r\
-	&equiv ((not q or p) and (not p or not r) and (not q or not r)) or q or r\
-	&equiv (not q or p or q or r) and (not p or not r or q or r) and (not q or not r or q or r)\
-	&equiv TT and TT and TT\
-	&equiv TT
-	$
-	So this compound proposition is a tautology.
-]
-
-#hw("45")[
-	Find a compound proposition *involving(包含)* the propositional variables $p$, $q$, and $r$ that is true when exactly two of $p$, $q$, and $r$ are true and is false otherwise.
-	
-	Hint: Form a disjunction of conjunctions. Include a conjunction for each combination of values for which the compound proposition is true. Each conjunction should include each of the three propositional variables or its negations.
-][
-	Here my answer is:
-	$
-	not (p and q and r) and [(p and q) or (p and r) or (q and r)]
-	$
-]
-
-#let NAND = math.italic("NAND")
-#let NOR = math.italic("NOR")
-
-\ We now present a group of exercises that involve the logical operators $NAND$ and $NOR$. The proposition $p NAND q$ is true when either $p$ or $q$, or both, are false; and it is false when both $p$ and $q$ are true. The proposition $p NOR q$ is true when both $p$ and $q$ are false, and it is false otherwise. The propositions $p NAND q$ and $p NOR q$ are denoted by $p|q$ and $p arrow.b q$, respectively. (The operators and $arrow.b$ are called the Sheffer stroke and the Peirce arrow after H. M. Sheﬀer and C. S. Peirce, respectively.)
-
-#hw("55")[
-	Find a compound proposition logically equivalent to $p -> q$ using only the logical operator $arrow.b$.
-][
-	Since $p equiv p or p$, we have $not p equiv p arrow.b p$. So there is:
-	$
-	p->q
-	&equiv not p or q\
-	&equiv not ((p arrow.b p) arrow.b q)\
-	&equiv ((p arrow.b p) arrow.b q) arrow.b ((p arrow.b p) arrow.b q)
-	$
-]
-
-#hw("63")[
-	How many of the disjunctions $p or not q or s$, $not p or not r or s$, $not p or not r or not s$, $not p or q or not s$, $q or r or not s$, $q or not r or not s$, $not p or not q or not s$, $p or r or s$, and $p or r or not s$ can be made *simultaneously(同时地)* true by an assignment of truth values to $p$, $q$, $r$, and $s$?
-][
-	#let T = [T]
-	#let F = [F]
-
-	Let's discuss in cases:
-
-	- #[
-		If $s$ is true, there are three propositions in the given statement always hold true. Only $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, and $p or r$ need to be considered. We can list a truth table:
-	
-		#table(
-			columns: (1fr, 1fr, 1fr, 2fr, 2fr, 2fr, 2fr, 2fr, 2fr),
-			inset: 5pt,
-			align: horizon + center,
-			$p$, $q$, $r$, $not p or not r$, $not p or q$, $q or r$, $q or not r$, $not p or not q$, $p or r$,
-			T, T, T, F, T, T, T, F, T,
-			T, T, F, T, T, T, T, F, T,
-			T, F, T, F, F, T, F, T, T,
-			T, F, F, T, F, F, T, T, T,
-			F, T, T, T, F, T, T, T, T,
-			F, T, F, T, F, T, T, T, F,
-			F, F, T, T, T, T, F, T, T,
-			F, F, F, T, T, F, T, T, F,
-		)
-
-		From the truth table, we can observe that at most 5 logical propositions can be true at the same time. So there are $8=3+5$ logical propositions hold true in total when $p,q,s$ is true and $r$ is false.
-	]
-
-	- #[
-		If $s$ is false, there are six propositions in the given statement always hold true. Only $p or not q$, $not p or not r$ and $p or r$ need to be considered.
-	]
-]
-
 = 1.4 Predicates and Quantifiers
 
 #hw("16")[
@@ -145,7 +27,16 @@
 	(c) $forall x (x^2 + 2 >= 1)$
 
 	(d) $forall x (x^2 != x)$
-][]
+][
+
+	(a) True, since when $x=sqrt(2)$, $x^2=2$ is true.
+	
+	(b) False, since $x^2>=0$ holds forall $x in RR$.
+
+	(c) True, since $x^2+2>=2$ holds forall $x in RR$.
+
+	(d) False, since when $x=1$, $x^2!=x$ is false.
+]
 
 #hw("24")[
 	Translate in two ways each of these statements into logical expressions using predicates, quantifiers, and logical connectives. First, let the domain consist of the students in your class and second, let it consist of all people.
@@ -159,7 +50,17 @@
 	(d)	All students in your class can solve quadratic equa-tions.
 
 	(e)	Some student in your class does not want to be rich.
-][]
+][
+	Let $S(x)$ denotes "$x$ is in your class", $P(x)$ denotes "$x$ has a cellular phone", $M(x)$ denotes "$x$ has seen a foreign movie".
+
+	#table(
+
+		align: center,
+		columns: (2em, 1fr, 1fr),
+		stroke: 0.5pt,
+		[(a)], [$forall x (S(x) -> P(x))$], [$(forall x S(x)) -> P(x)$],
+	)
+]
 
 #hw("34")[
 	Express the negation of these propositions using quantifiers, and then express the negation in English.
@@ -178,15 +79,81 @@
 ][]
 
 #hw("64")[
-	Let P(x), Q(x), R(x), and S(x) be the statements “x is a duck,” “x is one of my poultry,” “x is an officer,” and “x is willing to waltz,” respectively. Express each of these statements using quantifiers; logical connectives; and P(x), Q(x), R(x), and S(x).
+	Let $P(x)$, $Q(x)$, $R(x)$, and $S(x)$ be the statements “$x$ is a duck,” “$x$ is one of my poultry,” “$x$ is an officer,” and “$x$ is willing to waltz,” respectively. Express each of these statements using quantifiers; logical connectives; and $P(x)$, $Q(x)$, $R(x)$, and $S(x)$.
 	
 	(a) No ducks are willing to waltz.
 	
-	(b) No oﬃcers ever decline to waltz.
+	(b) No officers ever decline to waltz.
 	
 	(c) All my poultry are ducks.
 	
-	(d) My poultry are not oﬃcers.
+	(d) My poultry are not officers.
 	
 	(e)\* Does (d) follow from (a), (b), and (c)? If not, is there a correct conclusion?
+][]
+
+
+= 1.5 Nested Quantifiers
+
+#hw("7")[
+	Let $T(x, y)$ mean that student $x$ likes cuisine $y$, where the domain for $x$ consists of all students at your school and the domain for $y$ consists of all cuisines. Express each of these statements by a simple English sentence.
+
+	(b) $∃x T(x, "Korean") ∧ ∀x T(x, "Mexican")$
+
+	(d) $∀x∀z∃y((x	z) → ¬(T(x, y) ∧ T(z, y)))$
+
+	(f) $∀x∀z∃y(T(x, y) ↔ T(z, y))$
+][
+
+]
+
+#hw("12")[
+	Let $I(x)$ be the statement “$x$ has an Internet connection” and $C(x, y)$ be the statement “$x$ and $y$ have chatted over the Internet,” where the domain for the variables $x$ and $y$ consists of all students in your class. Use quantifiers to express each of these statements.
+
+	(d) No one in the class has chatted with Bob.
+
+	(h) Exactly one student in your class has an Internet connection.
+
+	(k) Someone in your class has an Internet connection but has not chatted with anyone else in your class.
+	
+	(n) There are at least two students in your class who have not chatted with the same person in your class.
+][
+]
+
+#hw("19")[
+	Express each of these statements using mathematical and logical operators, predicates, and quantifiers, where the domain consists of all integers.
+	
+	(a) The sum of two negative integers is negative.
+	
+	(b) The difference of two positive integers is not neces- sarily positive.
+	
+	(c) The sum of the squares of two integers is greater than or equal to the square of their sum.
+	
+	(d) The absolute value of the product of two integers is the product of their absolute values.
+][]
+
+#hw("33")[
+	Rewrite each of these statements so that negations appear only within predicates (that is, so that no negation is outside a quantifier or an expression involving logical connectives).
+
+	(a) $¬∀x∀y P(x, y)$
+
+	(b) $¬∀y∃x P(x, y)$
+
+	(c) $¬∀y∀x(P(x, y) ∨ Q(x, y))$
+
+	(d) $¬(∃x∃y¬P(x, y) ∧ ∀x∀y Q(x, y))$
+
+	(e) $¬∀x(∃y∀z P(x, y, z) ∧ ∃z∀y P(x, y, z))$
+][]
+
+#hw("38")[
+	Express the negations of these propositions using quantifiers, and in English.
+	
+	(b) There is a student in this class who has never seen a computer.
+	
+	(d) There is a student in this class who has been in at least one room of every building on campus.
+][]
+
+#hw("48")[
+	Show that $∀x P(x) ∨ ∀x Q(x)$ and $∀x∀y(P(x) ∨ Q(y))$, where all quantifiers have the same nonempty domain, are logically equivalent. (The new variable y is used to combine the quantifications correctly.)
 ][]

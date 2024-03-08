@@ -119,6 +119,7 @@
   ]
 
   set par(first-line-indent: indent)
+  set table(inset: 5pt, stroke: 0.5pt, align: horizon + center)
 
   body
 }
