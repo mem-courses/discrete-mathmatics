@@ -73,7 +73,7 @@
 ]
 
 #hw("20(e)")[
-	Suppose that the domain of the propositional function P(x) consists of −5, −3, −1, 1, 3, and 5. Express these statements without using quantifiers, instead using only negations, disjunctions, and conjunctions.
+	Suppose that the domain of the propositional function $P(x)$ consists of −5, −3, −1, 1, 3, and 5. Express these statements without using quantifiers, instead using only negations, disjunctions, and conjunctions.
 
 	(e) $∃x(¬P(x)) ∧ ∀x((x < 0) → P(x))$
 ][]
