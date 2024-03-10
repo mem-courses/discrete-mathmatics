@@ -184,10 +184,15 @@
 #hw("6")[
 	Let $C(x, y)$ mean that student $x$ is enrolled in class $y$, where the domain for $x$ consists of all students in your school and the domain for $y$ consists of all classes being given at your school. Express each of these statements by a simple English sentence.
 
-	(e) $∃x∃y∀z((x!=y) ∧ (C(x, z) → C(y, z)))$
+	(e) $∃x∃y∀z((x!=y) and (C(x, z) -> C(y, z)))$
 
-	(f) $∃x∃y∀z((x!=y) ∧ (C(x, z) ↔ C(y, z)))$
-][]
+	(f) $∃x∃y∀z((x!=y) and (C(x, z) <-> C(y, z)))$
+][
+
+	(e) There are two students A and B in my school that B are enrolled in all classes that A is enrolled in.
+
+	(f) There are two students in my school who are enrolled in exactly the same classes.
+]
 
 #hw("12")[
 	Let $I(x)$ be the statement "$x$ has an Internet connection" and $C(x, y)$ be the statement "$x$ and $y$ have chatted over the Internet," where the domain for the variables $x$ and $y$ consists of all students in your class. Use quantifiers to express each of these statements.
@@ -199,7 +204,16 @@
 	(k) Someone in your class has an Internet connection but has not chatted with anyone else in your class.
 
 	(n) There are at least two students in your class who have not chatted with the same person in your class.
-][]
+][
+
+	(d) $forall x not C(x, "Bob")$
+
+	(h) $exists x (I(x) and forall y (y!=x -> not I(x)))$
+
+	(k) $exists x (I(x) and forall y (y!=x -> not C(x,y)))$
+
+	(n) $exists x exists y forall z (x!=y and not (C(x,z) <-> C(y,z)))$
+]
 
 #hw("14")[
 	Use quantifiers and predicates with more than one variable to express these statements.
@@ -208,10 +222,20 @@
 	
 	(d) All students in this class have learned at least one programming language.
 	
-	(e) There is a student in this class who has taken every course oﬀered by one of the departments in this school.
+	(e) There is a student in this class who has taken every course offered by one of the departments in this school.
 	
 	(f) Some student in this class grew up in the same town as exactly one other student in this class.
-][]
+][
+
+	(c) Let $P(x,y)$ denotes "student $x$ has visited," where the domain for the variable $x$ consists the students in this class and the domain for $y$ consists all the cities. Then, the given statement can be expressed as
+	$ exists x (P(x, "Alaska") and not P(x, "Hawaii")) $#fake_par
+	
+	(d) Let $P(x,y)$ denotes "student $x$ has learned programming language $y$", where the domain for the variable $x$ consists the students in this class and the domain for $y$ consists all the programming languages. Then, the given statement can be expressed as
+	$ forall x exists y P(x,y) $#fake_par
+
+	(e) Let $P(x,y,z)$ denotes "student $x$ has taken course $y$ offered by department $z$", where the domain for the variable $x$ consists the students in this class, the domain for $y$ consists all the courses, and the domain for $z$ consists all the departments. Then, the given statement can be expressed as
+	$ exists x forall y exists z P(x,y,z) $#fake_par
+]
 
 #hw("24")[
 	Translate each of these nested quantifications into an English statement that expresses a mathematical fact. The domain in each case consists of all real numbers.
