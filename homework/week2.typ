@@ -76,20 +76,33 @@
 	Suppose that the domain of the propositional function $P(x)$ consists of −5, −3, −1, 1, 3, and 5. Express these statements without using quantifiers, instead using only negations, disjunctions, and conjunctions.
 
 	(e) $∃x(¬P(x)) ∧ ∀x((x < 0) → P(x))$
-][]
+][
+	The part of statement $exists x (not P(x))$ can be expressed as:
+
+	$ not P(-5) or not P(-3) or not P(-1) or not P(1) or not P(3) or not P(5) $
+
+	And the another part $forall x ((x<0) -> P(x))$ can be expressed as:
+
+	$ P(-5) and P(-3) and P(-1) $
+
+	So the original statement can be expressed as:
+
+	$ (not P(-5) or not P(-3) or not P(-1) or not P(1) or not P(3) or not P(5)) and (P(-5) and P(-3) and P(-1)) $
+]
 
 #hw("24")[
 	Translate in two ways each of these statements into logical expressions using predicates, quantifiers, and logical connectives. First, let the domain consist of the students in your class and second, let it consist of all people.
 
 	(b)	Somebody in your class has seen a foreign movie.
 
-	(d)	All students in your class can solve quadratic equa-tions.
+	(d)	All students in your class can solve quadratic equations.
 ][
-	Let $S(x)$ denotes "$x$ is in your class", $P(x)$ denotes "$x$ has a cellular phone", $M(x)$ denotes "$x$ has seen a foreign movie".
+	Let $S(x)$ denotes "$x$ is in your class", $M(x)$ denotes "$x$ has seen a foreign movie" and $Q(x)$ denotes "$x$ can solve quadratic equations".
 
 	#table(
 		columns: (5em, 1fr, 1fr),
-		[(b)], 
+		[(b)], $exists x M(x)$, $exists x(S(x) and M(x))$,
+		[(d)], $forall x Q(x)$, $forall x(not S(x) or Q(x))$,
 	)
 ]
 
@@ -103,11 +116,42 @@
 	(c)	No one can keep a secret.
 	
 	(d)	There is someone in this class who does not have a good attitude.
-][]
+][
+
+	(a) Let the domain consist of all drivers, and let $P(x)$ denotes "$x$ obeys the speed limit". And the given statement can be expressed as
+	$ exists x not P(x). $
+	And the negation of this proposition is
+	$ not (exists x not P(x)), $
+	which is equivalent to
+	$ forall x P(x) $
+	In English, we can say "All drivers obey the speed limit."
+
+	(b) Let the domain consist of all Swedish movies, and let $P(x)$ denotes "$x$ is serious". The given statement can be expressed as
+	$ forall x P(x). $
+	And the negation of this proposition is
+	$ not(forall x P(x)) equiv exists x not P(x) $
+	In English, it can be expressed as "There is a Swedish movie that is not serious."
+
+	(c) Let the domain consist of all people, and let $P(x)$ denotes "$x$ can keep a secret". The given statement can be expressed as
+	$ forall x not P(x) $
+	And the negation of this proposition is
+	$ not (forall x not P(x)) equiv exists x P(x) $
+	In English, it can be expressed as "There is someone who can keep a secret."
+
+	(d) Let the domain consist of all students in this class, and let $P(x)$ denotes "$x$ has a good attitude". The given statement can be expressed as
+	$ exists x not P(x) $
+	And the negation of this proposition is
+	$ not (exists x not P(x)) equiv forall x P(x) $
+	In English, it can be expressed as "All students in this class have a good attitude."
+]
 
 #hw("53")[
 	Show that $∃x P(x) ∧ ∃x Q(x)$ and $∃x(P(x) ∧ Q(x))$ are not logically equivalent.
-][]
+][
+	Let the domain consist of all positive integers, and let $P(x)$ denotes "$x$ is even" and $Q(x)$ denotes "$x$ is odd".
+	
+	Obviously, proposition $exists x P(x)$ and $exists x Q(x)$ are all true, but there isn't a number can be even or odd at the same time, so the proposition $exists x(P(x) and Q(x))$ is false. Therefore, the two propositions are not logically equivalent.
+]
 
 #hw("64")[
 	Let $P(x)$, $Q(x)$, $R(x)$, and $S(x)$ be the statements "$x$ is a duck," "$x$ is one of my poultry," "$x$ is an officer," and "$x$ is willing to waltz," respectively. Express each of these statements using quantifiers; logical connectives; and $P(x)$, $Q(x)$, $R(x)$, and $S(x)$.
@@ -121,7 +165,18 @@
 	(d) My poultry are not officers.
 	
 	(e)\* Does (d) follow from (a), (b), and (c)? If not, is there a correct conclusion?
-][]
+][
+
+	(a) $forall x (P(x) -> not S(x))$
+
+	(b) $forall x (R(x) -> S(x))$
+
+	(c) $forall x (Q(x) -> P(x))$
+
+	(d) $forall x (Q(x) -> not R(x))$
+
+	(e) No. The correct conclusion is $forall x ((Q(x) -> not S(x)) and (R(x) -> S(x)))$.
+]
 
 
 = 1.5 Nested Quantifiers
