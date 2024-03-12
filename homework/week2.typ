@@ -5,7 +5,7 @@
 	course: "Discrete Mathmatics",
 	course_fullname: "Discrete Mathematics and Application",
 	course_code: "211B0010",
-	title: "Homework #2: Propositional Logic",
+	title: "Homework #2: Predicates and Quantifiers",
 	authors: ((
 		name: "Yulun WU",
 		email: "memset0@outlook.com",
@@ -230,11 +230,14 @@
 	(c) Let $P(x,y)$ denotes "student $x$ has visited," where the domain for the variable $x$ consists the students in this class and the domain for $y$ consists all the cities. Then, the given statement can be expressed as
 	$ exists x (P(x, "Alaska") and not P(x, "Hawaii")) $#fake_par
 	
-	(d) Let $P(x,y)$ denotes "student $x$ has learned programming language $y$", where the domain for the variable $x$ consists the students in this class and the domain for $y$ consists all the programming languages. Then, the given statement can be expressed as
+	(d) Let $P(x,y)$ denotes "student $x$ has learned programming language $y$", where the domain for $x$ consists the students in this class and the domain for $y$ consists all the programming languages. Then, the given statement can be expressed as
 	$ forall x exists y P(x,y) $#fake_par
 
-	(e) Let $P(x,y,z)$ denotes "student $x$ has taken course $y$ offered by department $z$", where the domain for the variable $x$ consists the students in this class, the domain for $y$ consists all the courses, and the domain for $z$ consists all the departments. Then, the given statement can be expressed as
+	(e) Let $P(x,y,z)$ denotes "student $x$ has taken course $y$ offered by department $z$", where the domain for $x$ consists the students in this class, the domain for $y$ consists all the courses, and the domain for $z$ consists all the departments. Then, the given statement can be expressed as
 	$ exists x forall y exists z P(x,y,z) $#fake_par
+
+	(f) Let $P(x,y)$ denotes "student $x$ in this class grew up in the town $y$", where the domain for $x$ consists all students, and the domain for $y$ consists all towns. Then, the given statement can be expressed as
+	$ exists x exists y forall z ((x!=y and y!=z and x != z)-> (exists t P(x,t) and P(y,t) and not P(z,t))) $
 ]
 
 #hw("24")[
@@ -243,16 +246,35 @@
 	(a) $∃x∀y(x + y = y)$
 	
 	(d) $∀x∀y((x!=0) ∧ (y!=0) ↔ (x y!=0))$
-][]
+][
+
+	(a) There is a real number $x$ that for all real number $y$, the sum of $x$ and $y$ is $y$.
+
+	(b) For any two non-zero real numbers $x$ and $y$, their product must not be zero.
+]
 
 #hw("32(d)")[
-	Express the negations of each of this statement so that all negation symbols immediately precede predicates.
+	Express the negations of this statement so that all negation symbols immediately precede predicates.
 	$ ∀y∃x∃z(T(x, y, z) ∨ Q(x, y)) $
-][]
+][
+	The negation of given statement is
+	$ not forall y exists x exists z (T(x,y,z) or Q(x,y)). $
+
+	By applying De Morgan's laws, we can get
+	$ exists y forall x forall z (not T(x,y,z) and not Q(x,y)) $
+
+]
 
 #hw("34")[
 	Find a common domain for the variables $x$, $y$, and $z$ for which the statement $∀x∀y((x!=y) → ∀z((z = x) ∨ (z = y)))$ is true and another domain for which it is false.
-][]
+][
+	$
+	&forall x forall y ((x != y) -> forall z ((z = x) or (z = y)))\
+	equiv& forall x forall y ((x = y) or forall z ((z = x) or (z = y)))\
+	equiv& forall x forall y forall z ((x = y) or (z = x) or (z = y))\
+	$
+	Therefore, any common domain that consists at most two elements will make this statement true since at least two variables chosen from the domain would be equal. Otherwise, for the domain that consists more than two elements, the statement will be false.
+]
 
 #hw("38")[
 	Express the negations of these propositions using quantifiers, and in English.
@@ -260,8 +282,30 @@
 	(b) There is a student in this class who has never seen a computer.
 	
 	(d) There is a student in this class who has been in at least one room of every building on campus.
-][]
+][
+	
+	(b) Let $Q(x)$ be "student $x$ has seen a computer". Then the given proposition can be expressed using quantifiers as
+	$ exists x not Q(x) $
+	The negation of this proposition is
+	$
+	not exists x not Q(x)
+	equiv forall x Q(x)
+	$
+	In English, it can be expressed as "All students in this class have seen a computer."
+
+	(d) Let $P(x,y,z)$ be "student $x$ has been in room $y$ of building $z$", and let the domain for $x$ consists all students on campus. Then the given proposition can be expressed using quantifiers as
+	$ exists x forall z exists y P(x,y,z) $
+	The negation of this proposition is
+	$
+	not (exists x forall z exists y P(x,y,z))
+	equiv forall x exists z forall y not P(x,y,z)
+	$
+	In English, it can be expressed as "There is a building that all student in this class have not been in at any room."
+]
 
 #hw("42")[
 	Use quantifiers to express the distributive laws of multiplication over addition for real numbers.
-][]
+][
+	$ forall x forall y forall z ((x+y)z = x z + y z) $
+	Here the domain consists all real numbers.
+]
