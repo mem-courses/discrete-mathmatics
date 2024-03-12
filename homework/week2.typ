@@ -309,3 +309,49 @@
 	$ forall x forall y forall z ((x+y)z = x z + y z) $
 	Here the domain consists all real numbers.
 ]
+
+== Extra Homework on Normal Forms
+
+#hw("1")[
+	Give the simplest DNF and CNF of the following statements:
+
+	(1) $((p->q) <-> (not q -> not p)) and r$
+
+	(2) $p or (not p or (q and not q))$
+
+	(3) $(p and (q and s)) or (not p and (q and s))$
+][
+	
+	(1) $
+	((p->q) <-> (not q -> not p)) and r
+	&equiv ((not p or q) <-> (not q or not p)) and r\
+	&equiv (not (not p or q) or (not q or not p)) and (not (not q or not p) or (not p or q)) and r\
+	&equiv ((p and not q) or (not p or not q)) and ((p and q) or (not p or q)) and r\
+	$
+]
+
+#hw("2")[
+	Give the full DNF of the following statements:
+
+	(1) $(not p or not q) -> (p <-> not q)$
+
+	(2) $(not r and (q -> p)) -> (p -> (q or r))$
+
+	(3) $(p -> (q and r)) and (not p -> (not q and not r))$
+][]
+
+#hw("3")[
+	Give the prenex normal forms of the following statements:
+
+	(1) $forall x (P(x) -> exists y Q(x,y))$
+
+	(2) $forall x forall y ((exists z P(x,y,z) and exists u Q(x,u)) -> exists v Q(y,v))$
+][]
+
+#hw("4")[
+	Give the prenex DNF and CNF of the following statements:
+
+	(1) $(exists x P(x) or exists x Q(x)) -> exists x (P(x) or Q(x))$
+
+	(2) $forall x forall y (P(x) -> Q(x,y)) -> exists y (P(y) and exists z Q(y,z))$
+][]
