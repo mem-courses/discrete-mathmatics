@@ -15,56 +15,174 @@
 	date: "March 12, 2024",
 )
 
+#let T = math.upright("T")
+#let F = math.upright("F")
+
 = Extra Homework on Normal Forms
 
 #hw("1")[
 	Give the simplest DNF and CNF of the following statements:
 
-	(1) $((p->q) <-> (not q -> not p)) and r$
+	1. $((p->q) <-> (not q -> not p)) and r$
 
-	(2) $p or (not p or (q and not q))$
+	2. $p or (not p or (q and not q))$
 
-	(3) $(p and (q and s)) or (not p and (q and s))$
+	3. $(p and (q and s)) or (not p and (q and s))$
 ][
-	
-	(1) $
-	((p->q) <-> (not q -> not p)) and r
-	&equiv ((not p or q) <-> (not q or not p)) and r\
-	&equiv (not (not p or q) or (not q or not p)) and (not (not q or not p) or (not p or q)) and r\
-	&equiv ((p and not q) or (not p or not q)) and ((p and q) or (not p or q)) and r\
-	$
+	1. #[
+		$
+		((p->q) <-> (not q -> not p)) and r
+		&equiv ((not p or q) <-> (not q or not p)) and r\
+		&equiv (not (not p or q) or (not q or not p)) and (not (not q or not p) or (not p or q)) and r\
+		&equiv ((p and not q) or (not p or not q)) and ((p and q) or (not p or q)) and r\
+		$
+	]
 ]
 
 #hw("2")[
 	Give the full DNF of the following statements:
 
-	(1) $(not p or not q) -> (p <-> not q)$
+	1. $(not p or not q) -> (p <-> not q)$
 
-	(2) $(not r and (q -> p)) -> (p -> (q or r))$
+	2. $(not r and (q -> p)) -> (p -> (q or r))$
 
-	(3) $(p -> (q and r)) and (not p -> (not q and not r))$
+	3. $(p -> (q and r)) and (not p -> (not q and not r))$
 ][
-	(1) Get the full DNF by truth table:
-	#table(
+	1. #[
+		Get the full DNF by truth table:
+		#table3(
+			columns: (1fr, 1fr, 2fr, 2fr, 4fr),
+			$p$, $q$, $not p or not q$, $p<-> not q$, $(not p or not q) -> (p <-> not q)$,
+			T, T, F, F, T,
+			T, F, T, T, T,
+			F, T, T, T, T,
+			F, F, T, F, F,
+		)
+		Then, we can derive:
+		$
+		(not p or not q) -> (p <-> not q)
+		equiv (p and q) or (p and not q) or (not p and q)
+		$
+	]
 
-	)
+	2. #[
+		Get the full DNF by truth table:
+
+		#table3(
+			columns: (0.8fr, 0.8fr, 0.8fr, 2fr, 2fr, 3.5fr, 3fr, 7fr),
+			$p$, $q$, $r$, $q->p$, $q or r$, $not r and (q -> p)$, $p -> (q or r)$, $(not r and (q -> p)) -> (p -> (q or r))$,
+			[T], [T], [T], [T], [T], [F], [T], [T],
+			[T], [T], [F], [T], [T], [T], [T], [T],
+			[T], [F], [T], [T], [T], [F], [T], [T],
+			[T], [F], [F], [T], [F], [T], [F], [F],
+			[F], [T], [T], [F], [T], [F], [T], [T],
+			[F], [T], [F], [F], [T], [T], [T], [T],
+			[F], [F], [T], [T], [T], [F], [T], [T],
+			[F], [F], [F], [T], [F], [F], [T], [T],
+		)
+
+		Then, we can derive:
+
+		$
+		(not r and (q -> p)) -> (p -> (q or r)) equiv
+		& (p and q and r) or (p and q and not r) or (p and not q and r) or (not p and q and r)\
+		& quad (not p and q and not r) or (not p and not q and r) or (not p and not q and not r)
+		$
+	]
+
+	3. #[
+		Get the full DNF by truth table:
+
+		#table3(
+			columns: (1fr, 1fr, 1fr, 2fr, 3fr, 5fr),
+			$p$, $q$, $r$, $p -> (q and r)$, $not p -> (not q and not r)$, $(p -> (q and r)) and (not p -> (not q and not r))$,
+			[T], [T], [T], [T], [T], [T],
+			[T], [T], [F], [F], [T], [F],
+			[T], [F], [T], [F], [T], [F],
+			[T], [F], [F], [F], [T], [F],
+			[F], [T], [T], [T], [F], [F],
+			[F], [T], [F], [T], [F], [F],
+			[F], [F], [T], [T], [F], [F],
+			[F], [F], [F], [T], [T], [T],
+		)
+
+		Then, we can derive:
+
+		$
+		(p -> (q and r)) and (not p -> (not q and not r))
+		equiv (p and q and r) or (not p and not q and not r)
+		$
+	]
 ]
 
 #hw("3")[
 	Give the prenex normal forms of the following statements:
 
-	(1) $forall x (P(x) -> exists y Q(x,y))$
+	1. $forall x (P(x) -> exists y Q(x,y))$
 
-	(2) $forall x forall y ((exists z P(x,y,z) and exists u Q(x,u)) -> exists v Q(y,v))$
-][]
+	2. $forall x forall y ((exists z P(x,y,z) and exists u Q(x,u)) -> exists v Q(y,v))$
+][
+	1. #[
+		$
+		forall x (P(x) -> exists y Q(x,y))
+		equiv& forall x (not P(x) or exists y Q(x, y))\
+		equiv& forall x exists y (not P(x) or Q(x,y))
+		$
+	]
+
+	2. #[
+		$
+		&forall x forall y ((exists z P(x,y,z) and exists u Q(x,u)) -> exists v Q(y,v))\
+		equiv& forall x forall y (not (exists z P(x,y,z) and exists u Q(x,u)) or exists v Q(y,v))\
+		equiv& forall x forall y (forall z not P(x,y,z) or forall u not Q(x,u) or exists v Q(y,v))\
+		equiv& forall x forall y forall z forall u exists v (not P(x,y,z) or not Q(x,u) or Q(y,v))\
+		$
+	]
+]
 
 #hw("4")[
 	Give the prenex DNF and CNF of the following statements:
 
-	(1) $(exists x P(x) or exists x Q(x)) -> exists x (P(x) or Q(x))$
+	1. $(exists x P(x) or exists x Q(x)) -> exists x (P(x) or Q(x))$
 
-	(2) $forall x forall y (P(x) -> Q(x,y)) -> exists y (P(y) and exists z Q(y,z))$
-][]
+	2. $forall x forall y (P(x) -> Q(x,y)) -> exists y (P(y) and exists z Q(y,z))$
+][
+	1. #[
+		Let us obtain the prenex normal form firstly,
+
+		$
+		&(exists x P(x) or exists x Q(x)) -> exists x (P(x) or Q(x))\
+		equiv& not (exists x P(x) or exists x Q(x)) or exists x (P(x) or Q(x))\
+		equiv& (forall x not P(x) and forall y not Q(y)) or exists z (P(z) or Q(z))\
+		equiv& forall x forall y exists z ((not P(x) and not Q(y)) or P(z) or Q(z))
+		$
+
+		This statement satisfies the property of DNF. And then we can get its CNF by applying the distributive law:
+
+		$
+		&forall x forall y exists z ((not P(x) and not Q(y)) or P(z) or Q(z))\
+		equiv& forall x forall y exists z ((not P(x) or P(z) or Q(z)) and (not Q(y) or P(z) or Q(z)))
+		$
+	]
+
+	2. #[
+		Let us obtain the prenex normal form firstly,
+		$
+		& forall x forall y (P(x) -> Q(x,y)) -> exists y (P(y) and exists z Q(y,z))\
+		equiv& (forall x forall y (P(x) -> Q(x,y))) -> (exists u (P(u) and exists v Q(u,v)))\
+		equiv& not (forall x forall y (not P(x) or Q(x,y))) or (exists u (P(u) and exists v Q(u,v)))\
+		equiv& (exists x exists y (P(x) and not Q(x,y))) or (exists u (P(u) and exists v Q(u,v)))\
+		equiv& exists x exists y exists u exists v ((P(x) and not Q(x,y)) or (P(u) and Q(u,v)))\
+		$
+
+		Luckily, this statement satisfies the property of DNF again. Then, we can get its CNF by applying the distributive law:
+		$
+		& exists x exists y exists u exists v ((P(x) and not Q(x,y)) or (P(u) and Q(u,v)))\
+		equiv& exists x exists y exists u exists v ((P(x) or P(u)) and (P(x) or Q(u,v)) and (not Q(x,y) or P(u)) and (not Q(x,y) or Q(u,v)))
+		$
+
+	]
+]
 
 = 1.6 Rules of Inference
 
@@ -72,13 +190,21 @@
 	Show that the argument form with premises $(p ∧ t) → (r ∨ s)$, $q → (u ∧ t)$, $u → p$, and $¬s$ and conclusion $q → r$ is valid by first using Exercise 11 and then using rules of inference from Table 1.
 
 	_Exercises 11_: Show that the argument form with premises $p_1, p_2, dots, p_n$ and conclusion $q → r$ is valid if the argument form with premises $p_1, p_2, dots, p_n$, $q$, and conclusion $r$ is valid.
-][]
+][
+
+]
 
 #hw("14")[
 	For each of these arguments, explain which rules of inference are used for each step.
 	
 	(d) "There is someone in this class who has been to France. Everyone who goes to France visits the Louvre. Therefore, someone in this class has visited the Louvre."
-][]
+][
+	Let $P(x)$: "$x$ has been to France". $Q(x)$: "$x$ has been to Louvre". 
+
+	Then the arguments given can be formalized as: $∃x P(x)$, $∀x (P(x) → Q(x))$, so that $∃x Q(x)$.
+
+	
+]
 
 #hw("18")[
 	What is wrong with this argument?

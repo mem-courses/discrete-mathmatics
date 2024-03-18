@@ -1,3 +1,5 @@
+#import "@preview/tablex:0.0.8": tablex, colspanx, rowspanx, hlinex, vlinex, cellx
+
 #let font_song = ("New Computer Modern", "Source Han Serif SC", "Simsun", "STSong")
 #let font_fangsong = ("FangSong", "STFangSong")
 #let font_hei = ("Calibri", "Source Han Sans SC", "Source Han Sans HW SC", "SimHei", "Microsoft YaHei", "STHeiti")
@@ -134,10 +136,10 @@
 #let hw(name, it, jt) = {block(width: 100%)[
   #v(0.4em)
   #problem_counter.update(x => (x + 1))
-  #strong[#hei[Problem #name:]]
+  #strong[#hei[Exercise #name:]]
   #it#fake_par#fake_par
   #v(0.2em)
-  #h(-indent)#strong[#hei[Answer:]]
+  #h(-indent)#strong[#hei[Solution:]]
   #jt
   #v(0.8em)
 ]}
@@ -180,3 +182,41 @@
 #let bug(it) = named_block(it, name: "Bug", color: rgb(204, 51, 153))
 #let quote(it) = named_block(it, name: "Quote", color: rgb(132, 90, 231))
 #let cite(it) = named_block(it, name: "Cite", color: rgb(132, 90, 231))
+
+#let table3(
+	..args,
+	inset: 0.5em,
+	stroke: 0.5pt,
+	align: center + horizon,
+	columns: (1fr)
+) = {
+	tablex(
+		columns: (1fr),
+		inset: 0pt,
+		stroke: 0pt,
+		map-hlines: h => {
+			if (h.y > 0) {
+				(..h, stroke: (stroke * 2) + black)
+			} else {
+				h
+			}
+		},
+		tablex(
+			..args,
+			inset: inset,
+			stroke: stroke,
+			align: align,
+			columns: columns,
+			map-hlines: h => {
+				if (h.y == 0) {
+					(..h, stroke: (stroke * 2) + black)
+				} else if (h.y == 1) {
+					(..h, stroke: stroke + black)
+				} else {
+					(..h, stroke: 0pt)
+				}
+			},
+			auto-vlines: false,
+		)
+	)
+}
