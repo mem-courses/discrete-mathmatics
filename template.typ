@@ -70,7 +70,7 @@
     }
   )
 
-  set text(font: font_song, lang: "zh", size: 12pt)
+  set text(font: font_song, lang: "en", size: 12pt)
   show math.equation: set text(weight: 400)
 
   // Set paragraph spacing.
@@ -134,12 +134,13 @@
 #let bb = (it) => [#strong[#it]]
 
 #let hw(name, it, jt) = {block(width: 100%)[
+  #let hl(x) = strong(text(x, font: ("Cambria", ..font_hei), number-type: "old-style"))
   #v(0.4em)
   #problem_counter.update(x => (x + 1))
-  #strong[#hei[Exercise #name:]]
+  #hl[Exercise #name:]
   #it#fake_par#fake_par
   #v(0.2em)
-  #h(-indent)#strong[#hei[Solution:]]
+  #h(-indent)#hl[Solution:]
   #jt
   #v(0.8em)
 ]}

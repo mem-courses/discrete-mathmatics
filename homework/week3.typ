@@ -201,44 +201,98 @@
 ][
 	Let $P(x)$: "$x$ has been to France". $Q(x)$: "$x$ has been to Louvre". 
 
-	Then the arguments given can be formalized as: $∃x P(x)$, $∀x (P(x) → Q(x))$, so that $∃x Q(x)$.
+	The steps of the argument are:
 
+	(1) $(exists x P(x)) and (forall x P(x) -> Q(x))$, the formalized premises.
+
+	(2) $P(c) and (P(c) -> Q(c))$ for some element $c$, by existential instantiation and universal instantiation.
+
+	(3) $Q(c)$ for some element $c$, by modus ponens.
 	
+	(4) $exists x Q(x)$, by existential generalization. And this is the conclusion made by given statement.
 ]
 
 #hw("18")[
 	What is wrong with this argument?
 	
 	Let $S(x, y)$ be "$x$ is shorter than $y$." Given the premise $∃s S(s, "Max")$, it follows that $S("Max", "Max")$. Then by existential generalization it follows that $∃x S(x, x)$, so that someone is shorter than himself.
-][]
+][
+	The argument is wrong. The step second is incorrect. The given premise should promise that $"Max"$ is not in the domain of $x$. Otherwise, "$x$ is shorten than $"Max"$" is not valid. Therefore, the total argument is invalid and leads to a wrong conclusion.
+]
 
 #hw("24")[
 	Identify the error or errors in this argument that supposedly shows that if $∀x(P(x) ∨ Q(x))$ is true then $∀x P(x) ∨ ∀x Q(x)$ is true.
 	
-	1.	$∀x(P(x) ∨ Q(x))$	Premise
-	2.	$P(c) ∨ Q(c)$	Universal instantiation from (1)
-	3.	$P(c)$	Simplification from (2)
-	4.	$∀x P(x)$	Universal generalization from (3)
-	5.	$Q(c)$	Simplification from (2)
-	6.	$∀x Q(x)$	Universal generalization from (5)
-	7.	$∀x(P(x) ∨ ∀x Q(x))$ Conjunction from (4) and (6)
-][]
+	(1) $∀x(P(x) ∨ Q(x))$	Premise
+	
+	(2) $P(c) ∨ Q(c)$	Universal instantiation from (1)
+	
+	(3) $P(c)$	Simplification from (2)
+	
+	(4) $∀x P(x)$	Universal generalization from (3)
+	
+	(5) $Q(c)$	Simplification from (2)
+	
+	(6) $∀x Q(x)$	Universal generalization from (5)
+	
+	(7) $∀x(P(x) ∨ ∀x Q(x))$ Conjunction from (4) and (6)
+][
+	$P(c) or Q(c)$ holding true doesn't imply $P(c)$ and $Q(c)$ both holding true. Therefore, the step (3) and (5) are incorrect, and the conclusion (7) is also incorrect.
+]
 
 #hw("29")[
 	Use rules of inference to show that if $∀x(P(x) ∨ Q(x))$, $∀x(¬Q(x) ∨ S(x))$, $∀x(R(x) → ¬S(x))$, and $∃x¬P(x)$ are true, then $∃x¬R(x)$ is true.
-][]
+][
+	Proof: 
 
-#hw("34")[
+	(1) $exists x not P(x)$: premise.
+
+	(2) $P(c)$ for some element $c$: existential instantiation from (1).
+
+	(3) $forall x (P(x) or Q(x))$, $forall x (not Q(x) or S(x))$, $forall x (R(x) -> not S(x))$: premise.
+
+	(4) $(P(c) or Q(c)) and (not Q(c) or S(c)) and (R(c) -> not S(c))$ for any element $c$: universal instantiation from (3)
+
+	(5) $P(c) and (P(c) or Q(c)) and (not Q(c) or S(c)) and (R(c) -> not S(c))$: conjunction from (2) and (4).
+
+	(6) $P(c) and Q(c) and (not Q(c) or S(c)) and (not R(c) or not S(c))$: simplification from (5)
+
+	(7) $P(c) and Q(c) and S(c) and not R(c)$: simplification from (6)
+
+	(8) $not R(c)$: simplification from (7)
+
+	(9) $exists x not R(x)$: existential generalization from (8)
+
+	Overall, the conclusion $exists x not R(x)$ is proved.
+]
+
+#hw("34(a)")[
 	The Logic Problem, taken from _WFF’N PROOF, The Game of Logic_, has these two assumptions:
 	
 	1.	"Logic is difficult or not many students like logic."
 	2.	"If mathematics is easy, then logic is not difficult."
 	#fake_par
 	
-	By translating these assumptions into statements involving propositional variables and logical connectives, determine whether each of the following are valid conclusions of these assumptions:
+	By translating these assumptions into statements involving propositional variables and logical connectives, determine whether each of the following are valid conclusions of this assumption: "That mathematics is not easy, if many students like logic."
+][
+	Let $p$: "logic is difficult"; $q$: "many student like logic"; $r$: "mathematics is easy".
 
-	(a) That mathematics is not easy, if many students like logic.
-][]
+	Then the assumption can be formalized as:
+
+	(1) $p or not q$
+
+	(2) $r -> not p$
+
+	The conclusion we want to prove is "$q -> not r$".
+
+	(3) $q -> p$: derived from (1)
+
+	(4) $p -> not r$: contrapositive from (2)
+
+	(5) $q -> not r$: hypothetical syllogism from (3) and (4)
+
+	Overall, the conclusion is proved.
+]
 
 = 1.7 Introduction to Proofs 
 
@@ -247,7 +301,13 @@
 	
 	_Hint_: Find the difference of the squares of $k + 1$ and $k$ where $k$ is a positive integer.
 ][
-	If $n$ is an odd integer, then exists an positive integer $k$ such that $n=2k-1$. Because the difference of the square of $k$ and the square of $k-1$ is $k^2-(k-1)^2=2k-1$. Therefore, every odd integer is the difference of two squares.
+	Proof:
+
+	(1) For any odd integer $n$ is an odd integer, there exists a positive integer $k$ such that $n=2k-1$.
+	
+	(2) $k^2-(k-1)^2=2k-1$ for any positive integer $k$.
+
+	(3) $n=2k-1=k^2-(k-1)^2$, obtained from (1) and (2), which means that for any odd integer $n$, it can be represented as the difference of two squares.
 ]
 
 #hw("8")[
@@ -278,40 +338,6 @@
 	No, the reasoning is incorrect.
 
 	In the given conditions, $x = sqrt(2 x^2 - 1)$, which implies that $x >= 0$ holds. But in the step (2), if we simply square both sides of equation, we will lose this restriction. Therefore, we should add $x>=0$ as a extra condition during the step (2). Thus, $x=-1$, the wrong solution, will be excluded. 
-]
-
-#hw("7")[
-	Use a direct proof to show that every odd integer is the diﬀerence of two squares. [Hint: Find the diﬀerence of the squares of k + 1 and k where k is a positive integer.]
-][]
-
-#hw("8")[
-	Prove that if $n$ is a perfect square, then $n + 2$ is not a perfect square.
-][
-	Proof the given proposition by contradiction.
-
-	If both $n$ and $n+2$ are perfect squares, then there exists two positive integers $x$ and $y$ such that $n=x^2$ and $n+2=y^2$. Therefore, $(n+2)-n = 2 = y^2 - x^2 = (x+y) (x-y)$.
-	
-	Since both $x$ and $y$ are integers, then $x+y$ and $x-y$ are also integers. Because the number $2$ is a prime, and can only equal to the product of $1$ and $2$, so that one element of ${x+y, x-y}$ is 2 and the other is 1.
-	
-	Therefore, $display(x = ((x+y)+(x-y))/2)=1.5$, isn't an integer. This is a contradiction, so the assumption that both $n$ and $n+2$ are perfect squares is false. Thus, if $n$ is a perfect square, then $n+2$ is not a perfect square.
-]
-
-#hw("36")[
-	Is this reasoning for finding the solutions of the equation $sqrt(2 x^2 - 1) = x$ correct?
-
-	(1) $sqrt(2 x^2 - 1) = x$ is given;
-
-	(2) $2 x^2 - 1 = x^2$, obtained by squaring both sides of (1);
-
-	(3) $x^2-1 = 0$, obtained by subtracting $x^2$ from both sides of (2);
-
-	(4) $(x+1)(x-1)=0$, obtained by factoring the left-hand side of $x^2-1$.
-
-	(5) $x=1$ or $x=-1$; which follows because $a b = 0$ implies that $a=0$ or $b=0$.
-][
-	No, the reasoning is _incorrect_.
-
-	In the given conditions, $x = sqrt(2 x^2 - 1)$, which implies that $x >= 0$ holds. But in the step (2), if we simply square both sides of equation, we will lose this restriction. Therefore, we should add $x>=0$ as a extra condition during the step (2). Thus $x=-1$, the wrong solution, will be excluded. 
 ]
 
 = 1.8 Proof Methods and Strategy
@@ -352,4 +378,88 @@
 	(6) Since $(x+y)^2>=0$, $display((x^2+2x y+y^2)/2) >= 0$ also holds.
 
 	(7) $display(sqrt((x^2+y^2)/2)) >= display((x+y)/2)$, by taking square root of both sides of (5). So the proposition is proved.
+]
+
+
+= 2.1 Sets
+
+#hw("13")[
+	Determine whether each of these statements is true or false.
+
+	(a) $x in {x}$
+	
+	(b) ${x} subset.eq {x}$
+	
+	(c) ${x} in {x}$
+
+	(d) ${x} in {{x}}$
+
+	(e) $emptyset subset.eq {x}$
+
+	(f) $emptyset in {x}$
+][
+	The answer is TTFTTF.
+]
+
+#hw("20")[
+	Find two sets $A$ and $B$ such that $A in B$ and $A subset.eq B$.
+][
+
+]
+
+#hw("24")[
+	Can you conclude that $A = B$ if $A$ and $B$ are two sets with the same power set?
+][
+
+]
+
+#hw("26")[
+	Determine whether each of these sets is the power set of a set, where $a$ and $b$ are distinct elements.
+
+	(a) $emptyset$
+
+	(b) ${emptyset, {a}}$
+
+	(c) ${emptyset, {a}, {emptyset, a}}$
+
+	(d) ${emptyset, {a}, {b}, {a, b}}$
+][
+
+]
+
+#hw("34(a)(c)")[
+	Let $A = {a, b, c}$, $B = {x, y}$, and $C = {0, 1}$. Find
+
+	(a) $A times B times C$
+
+	(c) $C times A times B$
+][
+]
+
+= 2.2 Set Operations
+
+#hw("19")[
+	Show that if $A$, $B$, and $C$ are sets, then $overline(A ∩ B ∩ C) = overline(A) ∪ overline(B) ∪ overline(C)$.
+
+	(a) by showing each side is a subset of the other side.
+
+	(b) using a membership table.
+][
+
+]
+
+#hw("54")[
+	Let $A_i = {dots, -2, -1, 0, 1, dots, i}$. Find 
+
+	(a) $display(union.big_(i=1)^n A_i)$
+
+	(b) $display(sect.big_(i=1)^n A_i)$
+][]
+
+#hw("63(c)")[
+	Show how bitwise operations on bit strings can be used to find these combinations of $A = {a, b, c, d, e}$, $B = {b, c, d, g, p, t, v}$, $C = {c, e, i, o, u, x, y, z}$, and $D = {d, e, h, i, n, o, t, u, x, y}$.
+
+	(c) $(A union D) sect (B union C)$
+][
+	
 ]
