@@ -43,7 +43,12 @@
 	(2) $(not r and (q -> p)) -> (p -> (q or r))$
 
 	(3) $(p -> (q and r)) and (not p -> (not q and not r))$
-][]
+][
+	(1) Get the full DNF by truth table:
+	#table(
+
+	)
+]
 
 #hw("3")[
 	Give the prenex normal forms of the following statements:
@@ -66,7 +71,7 @@
 #hw("12")[
 	Show that the argument form with premises $(p ∧ t) → (r ∨ s)$, $q → (u ∧ t)$, $u → p$, and $¬s$ and conclusion $q → r$ is valid by first using Exercise 11 and then using rules of inference from Table 1.
 
-	_Exercises 11_: 11.	Show that the argument form with premises $p_1, p_2, dots, p_n$ and conclusion $q → r$ is valid if the argument form with premises $p_1, p_2, dots, p_n$, $q$, and conclusion $r$ is valid.
+	_Exercises 11_: Show that the argument form with premises $p_1, p_2, dots, p_n$ and conclusion $q → r$ is valid if the argument form with premises $p_1, p_2, dots, p_n$, $q$, and conclusion $r$ is valid.
 ][]
 
 #hw("14")[
@@ -149,13 +154,48 @@
 	In the given conditions, $x = sqrt(2 x^2 - 1)$, which implies that $x >= 0$ holds. But in the step (2), if we simply square both sides of equation, we will lose this restriction. Therefore, we should add $x>=0$ as a extra condition during the step (2). Thus, $x=-1$, the wrong solution, will be excluded. 
 ]
 
+#hw("7")[
+	Use a direct proof to show that every odd integer is the diﬀerence of two squares. [Hint: Find the diﬀerence of the squares of k + 1 and k where k is a positive integer.]
+][]
+
+#hw("8")[
+	Prove that if $n$ is a perfect square, then $n + 2$ is not a perfect square.
+][
+	Proof the given proposition by contradiction.
+
+	If both $n$ and $n+2$ are perfect squares, then there exists two positive integers $x$ and $y$ such that $n=x^2$ and $n+2=y^2$. Therefore, $(n+2)-n = 2 = y^2 - x^2 = (x+y) (x-y)$.
+	
+	Since both $x$ and $y$ are integers, then $x+y$ and $x-y$ are also integers. Because the number $2$ is a prime, and can only equal to the product of $1$ and $2$, so that one element of ${x+y, x-y}$ is 2 and the other is 1.
+	
+	Therefore, $display(x = ((x+y)+(x-y))/2)=1.5$, isn't an integer. This is a contradiction, so the assumption that both $n$ and $n+2$ are perfect squares is false. Thus, if $n$ is a perfect square, then $n+2$ is not a perfect square.
+]
+
+#hw("36")[
+	Is this reasoning for finding the solutions of the equation $sqrt(2 x^2 - 1) = x$ correct?
+
+	(1) $sqrt(2 x^2 - 1) = x$ is given;
+
+	(2) $2 x^2 - 1 = x^2$, obtained by squaring both sides of (1);
+
+	(3) $x^2-1 = 0$, obtained by subtracting $x^2$ from both sides of (2);
+
+	(4) $(x+1)(x-1)=0$, obtained by factoring the left-hand side of $x^2-1$.
+
+	(5) $x=1$ or $x=-1$; which follows because $a b = 0$ implies that $a=0$ or $b=0$.
+][
+	No, the reasoning is _incorrect_.
+
+	In the given conditions, $x = sqrt(2 x^2 - 1)$, which implies that $x >= 0$ holds. But in the step (2), if we simply square both sides of equation, we will lose this restriction. Therefore, we should add $x>=0$ as a extra condition during the step (2). Thus $x=-1$, the wrong solution, will be excluded. 
+]
+
 = 1.8 Proof Methods and Strategy
 
 #hw("24")[
 	Use forward reasoning to show that if $x$ is a nonzero real number, then $x^2+1"/"x^2>=2$.
 	
 	_Hint_: Start with the inequality $(x − 1"∕"x)^2 >= 0$, which holds for all nonzero real numbers $x$.
-][Proof:
+][
+	Proof:
 
 	(1) $display((x-1/x)^2>=0)$, which holds for all nonzero real numbers $x$.
 
@@ -168,7 +208,8 @@
 
 #hw("26")[
 	The quadratic mean of two real numbers $x$ and $y$ equals $sqrt((x^2+y^2)"/"2)$. By computing the arithmetic and quadratic means of different pairs of positive real numbers, formulate a conjecture about their relative sizes and prove your conjecture.
-][For all pairs of positive real numbers, their quadratic mean if greater than or equal to their arithmetic mean.
+][
+	For all pairs of positive real numbers, their quadratic mean if greater than or equal to their arithmetic mean.
 
 	Proof:
 	
@@ -180,7 +221,9 @@
 
 	(4) $2x^2 + 2y^2 >= x^2 + 2 x y + y^2$, by adding $(x+y)^2$ to both side of (2).
 
-	(4) $display((x^2+y^2)/2 >= (x^2+2x y+y^2)/4)$, by dividing both sides of (3) by $4$.
+	(5) $display((x^2+y^2)/2 >= (x^2+2x y+y^2)/4)$, by dividing both sides of (3) by $4$.
 
-	(4) $x^2 + 2 x y + y^2 = (x+y)^2 >= 0$, which also holds for any $x$ and $y$.
+	(6) Since $(x+y)^2>=0$, $display((x^2+2x y+y^2)/2) >= 0$ also holds.
+
+	(7) $display(sqrt((x^2+y^2)/2)) >= display((x+y)/2)$, by taking square root of both sides of (5). So the proposition is proved.
 ]
