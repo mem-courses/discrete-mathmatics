@@ -16,7 +16,9 @@
 )
 
 #let T = math.upright("T")
+#let TT = math.upright("T")
 #let F = math.upright("F")
+#let FF = math.upright("F")
 #let PP = math.cal("P")
 
 = Extra Homework on Normal Forms
@@ -31,12 +33,43 @@
 	3. $(p and (q and s)) or (not p and (q and s))$
 ][
 	1. #[
-		$
-		((p->q) <-> (not q -> not p)) and r
-		&equiv ((not p or q) <-> (not q or not p)) and r\
-		&equiv (not (not p or q) or (not q or not p)) and (not (not q or not p) or (not p or q)) and r\
-		&equiv ((p and not q) or (not p or not q)) and ((p and q) or (not p or q)) and r\
-		$
+		Let's simplify by steps:
+
+		(1) $((p->q) <-> (not q -> not p)) and r$, the original statement.
+
+		(2) $equiv TT and r$, because $(p->q) <-> (not q -> not p)$ is a tautology by contrapositive law.
+
+		(3) $equiv r$, by identity laws.
+
+		Overall, the simplest DNF and CNF of the original statement are both $r$.
+	]
+
+	2. #[
+		Let's simplify by steps:
+
+		(1) $p or (not p or (q and not q))$ the original statement.
+
+		(2) $equiv p or (not p or FF)$, because $q and not q$ always holds false by negation laws.
+
+		(3) $equiv p or not p$, because negation laws.
+
+		Overall, the simplest DNF and CNF of the original statement are both $TT$.
+	]
+	
+	3. #[
+		Let's simplify by steps:
+
+		(1) Let $r = q and s$.
+
+		(2) The original statement can be simplified as "$(p and r) or (not p and r)$".
+
+		(3) $equiv (p or not p) and (r or r) and (p or r) and (not p or r)$, by distributive laws.
+
+		(4) $equiv r$, because $r$ must be true, otherwise the hole statement is false.
+
+		(5) $equiv q and s$, by the definition of $r$.
+
+		Overall, the simplest DNF and CNF of the original statement are both $q and s$.
 	]
 ]
 
@@ -192,7 +225,29 @@
 
 	_Exercises 11_: Show that the argument form with premises $p_1, p_2, dots, p_n$ and conclusion $q → r$ is valid if the argument form with premises $p_1, p_2, dots, p_n$, $q$, and conclusion $r$ is valid.
 ][
+	Proof:
 
+	(1) $(p and t) -> (r or s)$, premise.
+
+	(2) $q -> (u and t)$, premise.
+
+	(3) $u->p$, premise.
+
+	(4) $not s$, premise.
+
+	(5) $(p and t) -> r$, by simplification from (1) and (4).
+
+	(6) $not p or not t or r$, by implication law from (5).
+
+	(7) $not u or p$, by implication law from (6).
+
+	(8) $not u or not t or r$, by addiction from (6) and (7).
+
+	(9) $(u and t) -> r$, by implication law from (8).
+
+	(10) $q -> r$, by hypothetical syllogism from (9).
+
+	Overall, the conclusion is proved.
 ]
 
 #hw("14")[
