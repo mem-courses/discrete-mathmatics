@@ -5,7 +5,7 @@
 	course: "Discrete Mathmatics",
 	course_fullname: "Discrete Mathematics and Application",
 	course_code: "211B0010",
-	title: "Homework #3: Inference & Proofs",
+	title: "Homework #3: Inference & Proofs & Sets",
 	authors: ((
 		name: "Yulun WU",
 		email: "memset0@outlook.com",
