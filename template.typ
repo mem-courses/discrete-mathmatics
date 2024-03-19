@@ -221,3 +221,7 @@
 		)
 	)
 }
+
+#let indent-box(it) = box(width: 100% - indent)[
+  #h(indent)#it
+]

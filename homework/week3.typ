@@ -17,6 +17,7 @@
 
 #let T = math.upright("T")
 #let F = math.upright("F")
+#let PP = math.cal("P")
 
 = Extra Homework on Normal Forms
 
@@ -404,13 +405,21 @@
 #hw("20")[
 	Find two sets $A$ and $B$ such that $A in B$ and $A subset.eq B$.
 ][
-
+	Let $A = {1}$ and $B={1,{1}}$, so that $A in B$ and $A subset.eq B$ are both true. 
 ]
 
 #hw("24")[
-	Can you conclude that $A = B$ if $A$ and $B$ are two sets with the same power set?
+	Can you *conclude(v. 断定)* that $A = B$ if $A$ and $B$ are two sets with the same power set?
 ][
+	Let us proof by contraposition:
 
+	(1) Assume $A!=B$ and $PP(A) = PP(B)$.
+
+	(2) WLOG, assume that $abs(A) <= abs(B)$. So that there exists an element $x$ satisfying $x in B$ but $x in.not A$.
+
+	(3) Therefore, ${x} in PP(B)$ but ${x} in.not PP(A)$, which means $PP(A) != PP(B)$, that is a contradiction.
+
+	Overall, the conclusion $PP(A) = PP(B) -> A=B$ is proved.
 ]
 
 #hw("26")[
@@ -425,6 +434,13 @@
 	(d) ${emptyset, {a}, {b}, {a, b}}$
 ][
 
+	(a) F. The size of a power set is at least $2^0=1$, so that $emptyset$ must not be a power set.
+
+	(b) T. ${emptyset, {a}} = PP({a})$.
+
+	(c) F. The size of a power set is $2^k$, where $k$ is a non-negative integer representing the size of the original set. Since $|{emptyset, {a}, {emptyset, a}}| = 3$, so this set is not a power set.
+
+	(d) T. ${emptyset, {a}, {b}, {a, b}} = PP({a,b})$
 ]
 
 #hw("34(a)(c)")[
@@ -434,6 +450,10 @@
 
 	(c) $C times A times B$
 ][
+
+	(a) $A times B times C = {a x 0, a x 1, a y 0, a y 1, b x 0, b x 1, b y 0, b y 1, c x 0, c x 1, c y 0, c y 1}$.
+
+	(c) $C times A times B = {0 a x, 1 a x, 0 a y, 1 a y, 0 b x, 1 b x, 0 b y, 1 b y, 0 c x, 1 c x, 0 c y, 1 c y}$.
 ]
 
 = 2.2 Set Operations
@@ -446,20 +466,91 @@
 	(b) using a membership table.
 ][
 
+	(a) First, we will show $overline(A ∩ B ∩ C) subset.eq overline(A) ∪ overline(B) ∪ overline(C)$ by the following steps:
+	
+	#indent-box[
+		(a.1.1) Assume $x$ is in $overline(A ∩ B ∩ C)$
+		
+		(a.1.2) $x$ is not in $A sect B sect C$, by defintion of sets' complement.
+
+		(a.1.3) $not (x in A and x in B and x in C)$ holds, by definition of intersection.
+
+		(a.1.4) $x in.not A or x in.not B or x in.not C$, by De Morgan's law.
+
+		(a.1.5) $x in overline(A) or x in overline(B) or x in overline(C)$, by definition of complement.
+
+		(a.1.6) $x in (overline(A) union overline(B) union overline(C))$, by definition of union.
+
+		(a.1.7) Therefore, $overline(A ∩ B ∩ C) subset.eq overline(A) ∪ overline(B) ∪ overline(C)$ is proved.
+
+		Second, we will show $overline(A) ∪ overline(B) ∪ overline(C) subset.eq overline(A ∩ B ∩ C)$ also holds by following steps:
+
+		(a.2.1) Assume $x$ is in $overline(A) ∪ overline(B) ∪ overline(C)$.
+
+		(a.2.2) $x in overline(A) or x in overline(B) or x in overline(C)$, by definition of union.
+
+		(a.2.3) $x in.not A or x in.not B or x in.not C$, by definition of complement.
+
+		(a.2.4) $not (x in A and x in B and x in C)$, by De Morgan's law.
+
+		(a.2.5) $x in.not (A sect B sect C)$, by definition of intersection.
+
+		(a.2.6) $x in (A sect B sect C)$, by definition of complement.
+
+		(a.2.7) Therefore, $overline(A) ∪ overline(B) ∪ overline(C) subset.eq overline(A ∩ B ∩ C)$ is proved.
+
+		Overall, both sides are the subset of each other, so the equality is proved.
+	]
+
+	(b) The membership table is as follows:
+
+	#indent-box[
+		#let T = math.upright("1")
+		#let F = math.upright("0")
+
+		#table3(
+			columns: (1fr, 1fr, 1fr, 3fr, 3fr, 3fr),
+			$A$, $B$, $C$, $A sect B sect C$, $overline(A sect B sect C)$, $overline(A) union overline(B) union overline(C)$,
+			T, T, T, T, F, F,
+			T, T, F, F, T, T,
+			T, F, T, F, T, T,
+			T, F, F, F, T, T,
+			F, T, T, F, T, T,
+			F, T, F, F, T, T,
+			F, F, T, F, T, T,
+			F, F, F, F, T, T,
+		)
+
+		From the membership table we can easily derive that $overline(A ∩ B ∩ C) = overline(A) ∪ overline(B) ∪ overline(C)$.
+	]
 ]
 
 #hw("54")[
 	Let $A_i = {dots, -2, -1, 0, 1, dots, i}$. Find 
+	
+	#v(0.5em) (a) $display(union.big_(i=1)^n A_i)$#v(0.5em)
 
-	(a) $display(union.big_(i=1)^n A_i)$
+	#v(0.5em) (b) $display(sect.big_(i=1)^n A_i)$ #v(0.5em)
+][
 
-	(b) $display(sect.big_(i=1)^n A_i)$
-][]
+	(a) $display(union.big_(i=1)^n A_i) = A_n$. Since $A_i subset.eq A_(i+1)$, so that $A_i union A_(i+1) = A_(i+1)$.
+
+	#v(1em)
+
+	(b) $display(sect.big_(i=1)^n A_i) = A_1$. Since $A_i subset.eq A_(i+1)$, so that $A_i sect A_(i+1) = A_i$.
+]
 
 #hw("63(c)")[
 	Show how bitwise operations on bit strings can be used to find these combinations of $A = {a, b, c, d, e}$, $B = {b, c, d, g, p, t, v}$, $C = {c, e, i, o, u, x, y, z}$, and $D = {d, e, h, i, n, o, t, u, x, y}$.
 
 	(c) $(A union D) sect (B union C)$
 ][
-	
+	Let $U$: the set of all lowercase English letters. So that the bitset of given sets are:
+
+	- $A$: 11111000000000000000000000
+	- $B$: 01110010000000010001010000
+	- $C$: 00101000100000100000100111
+	- $D$: 00011001100001100001100110
+
+	With the help of calculator, we can get the result bit string is 01111000100000100001100110, representing the set ${b,c,d,e,i,o,t,u,x,y}$.
 ]
