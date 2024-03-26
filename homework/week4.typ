@@ -23,7 +23,7 @@
 	Determine whether this function is a bijection from $RR$ to $RR$.
 	$ f (x) = (x + 1)/(x + 2) $
 ][
-	It is not a bijection from $RR$ to $RR$. When $x$ is $-2$, the value of $f(x)$ is undefined. It means that the domain of $f(x)$ is $(-oo, -2) union (-2, +oo)$, so it must not be a bijection from $RR$ to $RR$.
+	It is not a bijection from $RR$ to $RR$. When $x$ is $-2$, the value of $f(x)$ is undefined. It means that the domain of $f(x)$ is $(-oo, -2) union (-2, +oo)$, so it must not be a bijection from $RR$ to $RR$.  
 ]
 
 #hw("36")[
@@ -65,7 +65,7 @@
 	(d) $floor(sqrt(ceil(x))) = floor(sqrt(x))$ for all positive real numbers $x$.
 ][
 
-	(c) It's true. Proof: Let $c$ be the value of $display(ceil(x))$. For any real number $x$, it's obvious that $display(ceil(x/2) = ceil(c/2))$ and $display(ceil(x/4) = ceil(c/4))$ holds. Thus we can have a discuss by cases:
+	(c) It's true. Proof: Let $c$ be the value of $display(ceil(x))$. For any real number $x$, it's obvious that $display(ceil(x/2) = ceil(c/2))$ and $display(ceil(x/4) = ceil(c/4))$ holds. Thus we can have a discuss in cases:
 
 	(c.1) $c equiv 0 space (mod 4)$: $display(ceil(c/4) = c/4)$, $display(ceil(ceil(c/2)/2) = ceil(c/4) = c/4)$.
 
@@ -79,7 +79,6 @@
 
 
 	(d) It's false. We can find a counter example easily: suppose that $x=8.1$, then $floor(sqrt(x))=2$ but $floor(sqrt(ceil(x))) = 3$.
-
 ]
 
 = 2.5	Cardinality of Sets
