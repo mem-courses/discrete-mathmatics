@@ -203,7 +203,7 @@
 	
 	(a) This algorithm lacks finiteness, the algorithm will never terminate.
 
-	(b) This algorithm lacks correctness, the value of $1"/"n$ when $n=0$ is undefined.
+	(b) This algorithm lacks effectiveness, the value of $1"/"n$ when $n=0$ is undefined.
 
 	(c) This algorithm lacks generality, this function only works when $n=10$.
 
