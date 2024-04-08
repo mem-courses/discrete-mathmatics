@@ -94,5 +94,5 @@
 
 	By the generalized pigeonhole principle, these exsits a hole $H_k$ with at least four $s_i$ in it. Since the $s_i$ is in the range $[1,125]$. So numbers in $H_k$ could only be chosen from ${k,24+k,48+k,72+k,96+k,120+k}.$ By the pigeonhole principle again, we can derived that we have to chose at least one pair of adjacent $s_i$ from the set. (Because we are choosing 4 from 6.) That's to say, there exists a pair of $s_i$ in $H_k$ such that their differences is exactly $24$.
 
-	And for _exercise 44_, we can calculate the answer through the similar method: (a) True; (b) True; (c) False; (d) True.
+	And for _exercise 44_, we can calculate the answer through the similar method: (a) True; (b) True; (c) True; (d) True.
 ]
