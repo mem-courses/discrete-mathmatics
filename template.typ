@@ -1,5 +1,7 @@
 #import "@preview/tablex:0.0.8": tablex, colspanx, rowspanx, hlinex, vlinex, cellx
 
+#let par-margin = 0.8em
+
 #let font_song = ("New Computer Modern", "Source Han Serif SC", "Simsun", "STSong")
 #let font_fangsong = ("FangSong", "STFangSong")
 #let font_hei = ("Calibri", "Source Han Sans SC", "Source Han Sans HW SC", "SimHei", "Microsoft YaHei", "STHeiti")
@@ -74,7 +76,7 @@
   show math.equation: set text(weight: 400)
 
   // Set paragraph spacing.
-  show par: set block(above: 0.8em, below: 0.8em)
+  show par: set block(above: par-margin, below: par-margin)
 
   // set heading(numbering: "1.1)")
   set par(leading: 0.75em)
