@@ -5,7 +5,7 @@
 	course: "Discrete Mathmatics",
 	course_fullname: "Discrete Mathematics and Application",
 	course_code: "211B0010",
-	title: "Homework #6: Counting Basic",
+	title: "Homework #6: Fundamentals of Counting",
 	authors: ((
 		name: "Yulun WU",
 		email: "memset0@outlook.com",
@@ -39,9 +39,13 @@
 
 	(b) Answer the question in part (a) using counting rules.
 ][
-	(a) #align(center, image("./images/6-1 solution-70.jpg", width: 50%))
+	#parts(
+		a: align(center, image("./images/6-1 solution-70.jpg", width: 28%)),
 
-	(b) Using the sum rule, the answer is $6+5+2+4 = 17$.
+		b: [
+			Using the sum rule, the answer is $6+5+2+4 = 17$.
+		]
+	)
 ]
 
 = 6.2 The Pigeonhole Principle

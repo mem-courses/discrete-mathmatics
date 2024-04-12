@@ -184,44 +184,56 @@
 #let quote(it) = named_block(it, name: "Quote", color: rgb(132, 90, 231))
 #let cite(it) = named_block(it, name: "Cite", color: rgb(132, 90, 231))
 
+#let table3-global-align = align
 #let table3(
 	..args,
 	inset: 0.5em,
 	stroke: 0.5pt,
+  width: 100%,
 	align: center + horizon,
 	columns: (1fr)
 ) = {
-	tablex(
-		columns: (1fr),
-		inset: 0pt,
-		stroke: 0pt,
-		map-hlines: h => {
-			if (h.y > 0) {
-				(..h, stroke: (stroke * 2) + black)
-			} else {
-				h
-			}
-		},
-		tablex(
-			..args,
-			inset: inset,
-			stroke: stroke,
-			align: align,
-			columns: columns,
-			map-hlines: h => {
-				if (h.y == 0) {
-					(..h, stroke: (stroke * 2) + black)
-				} else if (h.y == 1) {
-					(..h, stroke: stroke + black)
-				} else {
-					(..h, stroke: 0pt)
-				}
-			},
-			auto-vlines: false,
-		)
-	)
+  set table3-global-align(center)
+  box(
+    width: width,
+    clip: true,
+    stack(
+      tablex(
+        ..args,
+        inset: inset,
+        stroke: stroke,
+        align: align,
+        columns: columns,
+        map-hlines: h => {
+          if (h.y == 0) {
+            (..h, stroke: (stroke * 2) + black)
+          } else if (h.y == 1) {
+            (..h, stroke: stroke + black)
+          } else {
+            (..h, stroke: 0pt)
+          }
+        },
+        auto-vlines: false,
+      ),
+      line(stroke: (stroke * 2) + black, length: 100%)
+    )
+  )
 }
 
 #let indent-box(it) = box(width: 100% - indent)[
   #h(indent)#it
 ]
+
+#let parts(..it) = {
+	let buffer = ()
+	for (id, sol) in it.named() {
+		buffer.push([#h(indent) (#id)])
+		buffer.push(box(width: 100%, sol))
+	}
+	grid(
+		columns: 2,
+		column-gutter: 0.25em,
+    row-gutter: 1em,
+		..buffer,
+	)
+}
