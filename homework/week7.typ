@@ -5,7 +5,7 @@
 	course: "Discrete Mathmatics",
 	course_fullname: "Discrete Mathematics and Application",
 	course_code: "211B0010",
-	title: "Homework #7",
+	title: "Homework #7: Fundamentals of Combinatorial Counting",
 	authors: ((
 		name: "Yulun WU",
 		email: "memset0@outlook.com",
@@ -173,12 +173,12 @@
   (f) two dozen croissants with at least one plain croissant, at least two cherry croissants, at least three chocolate croissants, at least one almond croissant, at least two apple croissants, and no more than three broccoli croissants?
 ][
 	#parts(
-		a: [$n_1 = C(12-1,6-1) = C(11,5) = 462$.],
-		b: [$n_2 = C(3 times 12-1,6-1) = C(35,5) = 324,632$.],
-		c: [$n_3 = C(2 times 12-1,6-1) - 6 = 33,643$.],
-		d: [
-
-		]
+		a: [$n_1 = C(12+6-1,6-1) = C(17,5)$.],
+		b: [$n_2 = C(3 times 12+6-1,6-1) = C(41,5)$.],
+		c: [$n_3 = C(2 times 12+6-1,6-1) - C(6,1) = C(29,5) - 6$.],
+		d: [$n_4=C(29,5) - C(24-3+6-1,5)=C(29,5)-C(26,5)$.],
+		e: [$n_5=C(24+6-1-5-3,5)=C(21,5)$.],
+		f: [$n_6=C(24+6-1-1-2-3-1-2,5)-C(24+6-1-1-2-3-1-2-4,5)=C(20,5)-C(16,5)$.]
 	)
 ]
 
@@ -197,13 +197,28 @@
 ][
 	#parts(
 		a: [
-			First assign $1$ to each $x_i$, then distribute the remaining $23$ using the stars and bars method: $n_1=C(22, 5)$.
+			First assign $1$ to each $x_i$, then distribute the remaining $23$ using the stars and bars method:
+			$
+			n_1 = binom(22, 5) = 26,334
+			$
 		],
 		b: [
-			First assign $0,1,2,3,5,5$ to $x_1,x_2,x_3,x_4,x_5,x_6$ and then use the stars and bars methods: $n_2=C(13,5)$.
+			First assign $0,1,2,3,5,5$ to $x_1,x_2,x_3,x_4,x_5,x_6$ and then use the stars and bars methods:
+			$
+			n_2=binom(13,5)=1,287
+			$
 		],
 		c: [
-			
+			The answer is the total number of schemes minus the the number of schemes where the condition is not met (i.e., when $x_5>5$):
+			$
+			n_3 = binom(29+6-1,6-1) - binom(29+6-1-6,6-1) = binom(34,5) - binom(28,5) = 376,436
+			$
+		],
+		d: [
+			First insure that $x_2>8$, the answer is equal to the total number of schemes with ensurement minus the total number of schemes with ensurement but where the condition $x_1<8$ is not met:
+			$
+			n_4 = binom(29+6-1-9,6-1) - binom(29+6-1-9-8,6-1) = binom(25,5) - binom(17,5) = 59,318
+			$
 		]
 	)
 ]
