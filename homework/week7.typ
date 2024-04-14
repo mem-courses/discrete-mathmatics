@@ -30,19 +30,16 @@
 ][
 	#parts(
 		a: [
-			$display(n_1 = binom(10,3) = (10 times 9 times 8)/(3 times 2 times 1) = 120)$.
-			#v(0.5em)
+			$display(n_1 = C(10,3) = (10 times 9 times 8)"/"(3 times 2 times 1) = 120)$.
 		],
 		b: [
-			$display(n_2 = 1/2(2^10 - binom(10,5)) = 386)$.
-			#v(0.5em)
+			$display(n_2 = (2^10 - C(10,5))"/"2 = 386)$.
 		],
 		c: [
-			$display(n_3 = binom(10,7) + binom(10,8) + binom(10,9) + binom(10,10) = 120 + 45 + 10 + 1 = 176)$.
-			#v(0.5em)
+			$display(n_3 = C(10,7) + C(10,8) + C(10,9) + C(10,10) = 120 + 45 + 10 + 1 = 176)$.
 		],
 		d: [
-			$display(n_4 = 2^10 - binom(10,0) - binom(10,1) - binom(10,2) = 1024 - 1 - 10 - 45 = 968)$.
+			$display(n_4 = 2^10 - C(10,0) - C(10,1) - C(10,2) = 1024 - 1 - 10 - 45 = 968)$.
 		]
 	)
 ]
@@ -50,7 +47,14 @@
 #hw("44")[
 	Find a formula for the number of ways to seat $r$ of $n$ people around a circular table, where seatings are considered the same if every person has the same two neighbors without regard to which side these neighbors are sitting on.
 ][
-
+	Choose one position of the circular table as the starting point, and then label $n$ seats in clockwise order. Here we can transform the given problem into a linear seating problem:
+	$
+	binom(n,r)
+	$
+	And since all the people is distinguishable, it would be counted for multiple times if we shift people by the circle. So the number of ways need to divied by $r$, and the answer is:
+	$
+	1/r binom(n,r)
+	$
 ]
 
 #hw("46")[
@@ -167,7 +171,16 @@
   (e) two dozen croissants with at least five chocolate croissants and at least three almond croissants?
   
   (f) two dozen croissants with at least one plain croissant, at least two cherry croissants, at least three chocolate croissants, at least one almond croissant, at least two apple croissants, and no more than three broccoli croissants?
-][]
+][
+	#parts(
+		a: [$n_1 = C(12-1,6-1) = C(11,5) = 462$.],
+		b: [$n_2 = C(3 times 12-1,6-1) = C(35,5) = 324,632$.],
+		c: [$n_3 = C(2 times 12-1,6-1) - 6 = 33,643$.],
+		d: [
+
+		]
+	)
+]
 
 #hw("16")[
 	How many solutions are there to the equation
@@ -197,17 +210,43 @@
 
 #hw("28")[
 	How many positive integers less than $1,000,000$ have exactly one digit equal to $9$ and have a sum of digits equal to $13$?
-][]
+][
+	Discuss in cases of the nonzero digits:
+
+	(1) ${9,4}$: $n_1=C(6,2) dot A(2,2) = 30$.
+
+	(2) ${9,3,1}$: $n_2=C(6,3) dot A(3,3) = 120$.
+
+	(3) ${9,2,2}$: $n_3=C(6,3) dot A(3,3) "/" A(2,2) = 60$.
+
+	(4) ${9,2,1,1}$: $n_4=C(6,4) dot A(4,4) "/" A(2,2) = 180$.
+
+	(5) ${9,1,1,1,1}$: $n_5=C(6,5) dot A(5,5) "/" A(4,4) = 30$.
+
+	In conclusion, the total number of possible integers is $n=n_1+n_2+n_3+n_4+n_5 = 420$.
+]
 
 #hw("34")[
 	How many different strings can be made from the letters in _AARDVARK_, using all the letters, if all three $A$s must be consecutive?
-][]
+][
+	Regard three $A$s as a group to shuffle with other letters. The number of strings is:
+	$
+	n=(A_6^6)/(A_2^2 A_1^1 A_1^1 A_1^1 A_1^1) = (720)/2=360
+	$
+]
 
 #hw("48")[
 	A shelf holds 12 books in a row. How many ways are there to choose five books so that no two adjacent books are chosen? 
 	
 	_Hint_: Represent the books that are chosen by bars and the books not chosen by stars. Count the number of sequences of five bars and seven stars so that no two bars are adjacent.
-][]
+][
+	The number of ways is equal to divide 12 books into 6 consecutive intervals where only the last interval can be empty, and we choose the last book from the first five group to be the chosen books. 
+
+	Thus we can count the ways by the stars and bars method:
+	$
+	n = binom(13-1+1,6-1) = binom(12,5) = 792
+	$
+]
 
 #hw("52")[
 	How many ways are there to distribute five distinguishable objects into three indistinguishable boxes?
@@ -234,5 +273,15 @@
 ]
 
 #hw("63")[
-	Suppose that a weapons inspector must inspect each of five different sites twice, visiting one site per day. The inspector is free to select the order in which to visit these sites, but cannot visit site X, the most suspicious site, on two consecutive days. In how many different orders can the inspector visit these sites?
-][]
+	Suppose that a weapons inspector must inspect each of five different sites twice, visiting one site per day. The inspector is free to select the order in which to visit these sites, but cannot visit site $X$, the most suspicious site, on two consecutive days. In how many different orders can the inspector visit these sites?
+][
+	The number of ways to visit each site twice is:
+	$
+	n_1=(A_10^10)/(A_2^2 dot A_2^2 dot A_2^2 dot A_2^2 dot A_2^2) = 113,400
+	$
+	And the number of ways to visit the site $X$ in two consecutive days:
+	$
+	n_2=(A_9^9)/(A_2^2 dot A_2^2 dot A_2^2 dot A_2^2) = 22,680
+	$
+	In conclusion, the number of ways is $n=n_1-n_2=90,720$.
+]
