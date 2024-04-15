@@ -67,13 +67,13 @@
 
 	(2) Two horses tie and two not: $n_2 = C(4,2) times 3! = 36$.
 
-	(3) Two horses tie and two tie: $n_3 = C(4,2) times C(2,2) times 2! = 6 times 1 times 2 = 12$.
+	(3) Two horses tie and two tie: $n_3 = C(4,2) times C(2,2) times 2! "/" 2! = 6 times 1 times 2 "/" 2 = 6$.
 
 	(4) Three horses tie: $n_4 = C(4,3) times 2! = 4 times 2 = 8$.
 
 	(5) All horses tie: $n_5 = C(4,4) = 1$.
 
-	$n = n_1 + n_2 + n_3 + n_4 + n_5 = 81$.
+	$n = n_1 + n_2 + n_3 + n_4 + n_5 = 75$.
 ]
 
 = 6.4 Binomial Coefficients and Identities
