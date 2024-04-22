@@ -229,13 +229,17 @@
 #let parts(..it) = {
 	let buffer = ()
 	for (id, sol) in it.named() {
-		buffer.push([#h(indent) (#id)])
-		buffer.push(box(width: 100%, sol))
+		buffer.push(
+      grid(
+        columns: 2,
+        column-gutter: 0.25em,
+        [#h(indent) (#id)],
+        box(width: 100%, sol)
+      )
+    )
 	}
-	grid(
-		columns: 2,
-		column-gutter: 0.25em,
-    row-gutter: 1em,
-		..buffer,
-	)
+  stack(
+    spacing: 1em,
+    ..buffer,
+  )
 }
