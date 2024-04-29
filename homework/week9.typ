@@ -15,7 +15,10 @@
 	date: "April 16, 2024",
 )
 
-= Sec. 8.4 Generating Functions
+#let mt = math.bold(math.upright("M"))
+#let circ = $◦$
+
+= 8.4 Generating Functions
 
 #hw("6(d,f)")[
 	Find a closed form for the generating function for the sequence ${a_n}$, where
@@ -132,7 +135,7 @@
 	$
 ]
 
-= Sec. 8.5 Inclusion-Exclusion 
+= 8.5 Inclusion-Exclusion 
 
 #hw("7")[
 	There are 2504 computer science students at a school. Of these, 1876 have taken a course in Java, 999 have taken a course in Linux, and 345 have taken a course in C. Further, 876 have taken courses in both Java and Linux, 231 have taken courses in both Linux and C, and 290 have taken courses in both Java and C. If 189 of these students have taken courses in Linux, Java, and C, how many of these 2504 students have not taken a course in any of these three programming languages?
@@ -162,7 +165,7 @@
 	The answer is $2^10-1=1023$.
 ]
 
-= Sec. 8.6 Applications of Inclusion-Exclusion 
+= 8.6 Applications of Inclusion-Exclusion 
 
 #hw("6")[
 	An integer is called squarefree if it is not divisible by the square of a positive integer greater than 1. Find the number of squarefree positive integers less than 100.
@@ -200,3 +203,138 @@
 	$
 ]
 
+= 9.1 Relations and Their Properties
+
+#hw("7(a,c,h)")[
+	Determine whether the relation $R$ on the set of all integers is reflexive, symmetric, antisymmetric, and/or transitive, where $(x, y) in R$ if and only if
+
+	(a) $x!=y$.
+
+	(c) $x=y+1$ or $x=y-1$.
+
+	(h) $x>=y^2$.
+][#parts(
+	a: [The relation is irreflexive, symmetric and transitive.],
+	c: [The relation is irreflexive and symmetric.],
+	h: [The relation is transitive.],
+)]
+
+#hw("26")[
+	Let $R$ be the relation $R = {(a, b) | a < b}$ on the set of integers. Find
+
+	(a) $R^(-1)$.
+
+	(b) $overline(R)$.
+][#parts(
+	a: [$R^(-1) = {(b,a) | a < b} = {(a,b) | a > b}$.],
+	b: [$overline(R) = {(a,b) | not(a<b)} = {(a,b) | a >= b}$.],
+)]
+
+#hw("32")[
+	Let $R$ be the relation ${(1, 2), (1, 3), (2, 3), (2, 4), (3, 1)}$, and let $S$ be the relation ${(2, 1), (3, 1), (3, 2), (4, 2)}$. Find $S circ R$.
+][
+	Discuss with the common elements between two relations:
+
+	1: $(3,1)$ from $R$, and none from $S$.
+
+	2: $(1,2)$ from $R$, and $(2,1)$ from $S$.
+
+	3: $(1,3), (2, 3)$ from $R$, and $(3,1), (3, 2)$ from $S$.
+
+	4: (2,4) from $R$, and $(4, 2)$ from $S$.
+
+	Overall, we can conclude that $S circ R = {(1,1),(1,2),(2,1),(2,2)}$.
+]
+
+#hw("49")[
+	How many relations are there on a set with $n$ elements that are
+
+	(a) symmetric?
+
+	(b) antisymmetric?
+
+	(c) asymmetric?
+
+	(d) irreflexive?
+
+	(e) reflexive and symmetric?
+
+	(f) neither reflexive nor irreflexive?
+][#parts(
+	a: [$n_a = 2^(C(n,2) + n) = 2^(n(n+1)"/"2)$.],
+	b: [$n_b = 3^(C(n,2)) times 2^n$.],
+	c: [$n_c = 3^(C(n,2))$.],
+	d: [$n_d = 2^(n^2 - n) = 2^(n(n-1))$.],
+	e: [$n_e = 2^(C(n,2)) = 2^(n(n-1)"/"2)$.],
+	f: [$n_f = 2^(n(n-1)) times (2^(n)-2)$.],
+)]
+
+#hw("53")[
+	Show that the relation $R$ on a set $A$ is symmetric if and only if $R = R^(−1)$, where $R^(−1)$ is the inverse relation.
+][
+
+	Prove that if $R$ is symmetric, then $R = R^(-1)$: Since $R$ is symmetric, for any pair $(a,b) in R$, we have $(b,a) in R$ too. So $R subset.eq R^(-1)$ by definition. On the other hand, for any pair $(b,a) in R$, we have $(a,b) in R$. So $R^(-1) subset.eq R$. Thus, $R = R^(-1)$.
+
+	Prove that if $R=R^(-1)$, then $R$ is symmetric: Since $R=R^(-1)$. For any pair $(a,b) in R$, we have $(a,b) in R^(-1)$, which means $(b,a) in R$. So $R$ is symmetric.
+]
+
+= 9.3 Representing Relations
+
+#hw("13")[
+	Let $R$ be the relation represented by the matrix
+	$
+	mt_R = mat(
+		0,1,1;
+		1,1,0;
+		1,0,1;
+	)
+	$
+	Find the matrix representing
+
+	(a) $R^(-1)$.
+
+	(b) $overline(R)$.
+
+	(c) $R^2$.
+][$
+	mt_(R^(-1)) &= mat(0,1,1;1,1,0;1,0,1) (=mt_R) quad quad quad
+	mt_(overline(R)) &= mat(1,0,0;0,0,1;0,1,0) quad quad quad
+	mt_(R^2) &= mat(1,1,1;1,1,1;1,1,1)
+$]
+
+#hw("14")[
+	Let $R_1$ and $R_2$ be relations on a set $A$ represented by the matrices
+	$
+	mt_(R_1) = mat(0,1,0;1,1,1;1,0,0) "and" mt_(R_2) = mat(0,1,0;0,1,1;1,1,1)
+	$
+	Find the matrices that represent
+
+	(a) $R_1 union R_2$.
+
+	(b) $R_1 sect R_2$.
+
+	(c) $R_2 circ R_1$.
+
+	(d) $R_1 circ R_1$.
+
+	(e) $R_1 plus.circle R_2$.
+][$
+	mt_(R_1 union R_2) = mat(0,1,0;1,1,1;1,1,1) quad quad quad
+	mt_(R_1 sect R_2) = mat(0,1,0;0,1,1;1,0,0) quad quad quad
+	mt_(R_2 circ R_1) = mat(0,1,1;1,1,1;0,1,0)\
+	mt_(R_1 circ R_1) = mat(1,1,1;1,1,1;0,1,0) quad quad quad
+	mt_(R_1 plus.circle R_2) = mat(0,0,0;1,0,0;0,1,1)
+$]
+
+#hw("31")[
+	Determine whether the relations represented by the directed graphs shown in Exercises 23–25 are reflexive, irreflexive, symmetric, antisymmetric, and/or transitive.
+
+	#align(center, image("images/2024-04-29-14-27-29.png", width: 60%))
+][#parts(
+	a: [
+		The relation is ${(a,b),(a,c),(b,c),(c,b)}$. So it's irreflexive and transitive.	
+	],
+	b: [
+		The relation is ${(a,c),(c,d),(d,b),(b,a)}$. So it's irreflexive and antisymmetric.
+	]
+)]
