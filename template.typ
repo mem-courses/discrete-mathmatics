@@ -1,7 +1,5 @@
 #import "@preview/tablex:0.0.8": tablex, colspanx, rowspanx, hlinex, vlinex, cellx
 
-#let par-margin = 0.8em
-
 #let font_song = ("New Computer Modern", "Source Han Serif SC", "Simsun", "STSong")
 #let font_fangsong = ("FangSong", "STFangSong")
 #let font_hei = ("Calibri", "Source Han Sans SC", "Source Han Sans HW SC", "SimHei", "Microsoft YaHei", "STHeiti")
@@ -11,7 +9,9 @@
 #let theorem_counter = state("theorem_counter", 0)
 #let problem_counter = state("problem_counter", 0)
 
-#let indent = 2em
+#let indent = 0em
+#let force-indent = 2em
+#let par-margin = 0.8em
 #let fake_par = [#text()[#v(0pt, weak: true)];#text()[#h(0em)]]
 
 #let project(
@@ -193,9 +193,16 @@
 	stroke: 0.5pt,
   width: 100%,
 	align: center + horizon,
-	columns: (1fr)
+	columns: 1
 ) = {
   set table3-global-align(center)
+  if type(columns) == int {
+    let new_columns = ()
+    for i in range(columns) {
+      new_columns.push(1fr)
+    }
+    columns = new_columns
+  }
   box(
     width: width,
     clip: true,
@@ -222,10 +229,6 @@
   )
 }
 
-#let indent-box(it) = box(width: 100% - indent)[
-  #h(indent)#it
-]
-
 #let parts(..it) = {
 	let buffer = ()
 	for (id, sol) in it.named() {
@@ -233,7 +236,7 @@
       grid(
         columns: 2,
         column-gutter: 0.25em,
-        [#h(indent) (#id)],
+        [#h(force-indent / 2);*#id)*],
         box(width: 100%, sol)
       )
     )
@@ -243,3 +246,10 @@
     ..buffer,
   )
 }
+
+#let indent-box(it, radio: 1) = grid(
+  columns: (force-indent * radio, 1fr),
+  column-gutter: 0pt,
+  [], it,
+)
+#let idt = indent-box
