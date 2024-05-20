@@ -229,20 +229,16 @@
   )
 }
 
-#let parts(..it) = {
+#let parts(columns: 1, ..it) = {
 	let buffer = ()
 	for (id, sol) in it.named() {
-		buffer.push(
-      grid(
-        columns: 2,
-        column-gutter: 0.25em,
-        [#h(force-indent / 2);*#id)*],
-        box(width: 100%, sol)
-      )
-    )
+    buffer.push([#h(force-indent / 2);*#id)*])
+    buffer.push(box(width: 100%, sol))
 	}
-  stack(
-    spacing: 1em,
+  grid(
+    columns: 2 * columns,
+    column-gutter: 0.25em,
+    row-gutter: 1em,
     ..buffer,
   )
 }
