@@ -23,11 +23,12 @@
 #hw("6(d,f)")[
 	Find a closed form for the generating function for the sequence ${a_n}$, where
 
-	(d) $display(a_n=1/((n+1)!))$ for $n=0,1,2,dots$
-
-	#v(0.5em)
-
-	(f) $display(a_n=binom(10,n+1))$ for $n=0,1,2,dots$
+	#v(0.25em)
+	#parts(
+		columns: 2,
+		d: [$display(a_n=1/((n+1)!))$ for $n=0,1,2,dots$],
+		f: [$display(a_n=binom(10,n+1))$ for $n=0,1,2,dots$]
+	)
 ][#parts(
 	d: [
 		Let $display(A(x) = sum_(n>=0) a_n x^n)$, then
@@ -50,11 +51,11 @@
 #hw("10(c,d,e)")[
 	Find the coefficient of $x^9$ in the power series of each of these functions.
 
-	(c) $(x^3+x^5+x^6)(x^3+x^4)(x+x^2+x^3+x^4+dots.c)$
-
-	(d) $(x+x^4+x^7+x^10+dots.c)(x^2+x^4+x^6+x^8+dots.c)$
-
-	(e) $(1+x+x^2)^3$
+	#parts(
+		c: $(x^3+x^5+x^6)(x^3+x^4)(x+x^2+x^3+x^4+dots.c)$,
+		d: $(x+x^4+x^7+x^10+dots.c)(x^2+x^4+x^6+x^8+dots.c)$,
+		e: $(1+x+x^2)^3$
+	)
 ][#parts(
 	c: [
 		$3+3=6<9, 3+4=7<9, 5+3=8<9$. Thus, the coefficient of $x^9$ is 3.
@@ -89,17 +90,14 @@
 #hw("32")[
 	If $G(x)$ is the generating function for the sequence ${a_k}$, what is the generating function for each of these sequences?
 
-	(a) $2 a_0, 2 a_1, 2 a_2, 2 a_3, dots$
-
-	(b) $0,a_0,a_1,a_2,a_3,dots$ (assuming that terms follow the pattern of all but the first term)
-
-	(c) $0,0,0,0,a_2,a_3,dots$ (assuming that terms follow the pattern of all but the first four terms)
-
-	(d) $a_2,a_3,a_4,dots$
-
-	(e) $a_1,2 a_2, 3 a_3, 4 a_4, dots$
-
-	(f) $a_0^2,2 a_0 a_1, a_1^2 + 2 a_0 a_2, 2 a_0 a_3 + 2 a_1 a_2,dots$
+	#parts(
+		a: [$2 a_0, 2 a_1, 2 a_2, 2 a_3, dots$],
+		b: [$0,a_0,a_1,a_2,a_3,dots$ (assuming that terms follow the pattern of all but the first term)],
+		c: [$0,0,0,0,a_2,a_3,dots$ (assuming that terms follow the pattern of all but the first four terms)],
+		d: [$a_2,a_3,a_4,dots$],
+		e: [$a_1,2 a_2, 3 a_3, 4 a_4, dots$],
+		f: [$a_0^2,2 a_0 a_1, a_1^2 + 2 a_0 a_2, 2 a_0 a_3 + 2 a_1 a_2,dots$],
+	)
 ][#parts(
 	a: [$F_1(x) = 2 G(x)$.],
 	b: [$F_2(x) = x G(x)$.],
@@ -208,11 +206,12 @@
 #hw("7(a,c,h)")[
 	Determine whether the relation $R$ on the set of all integers is reflexive, symmetric, antisymmetric, and/or transitive, where $(x, y) in R$ if and only if
 
-	(a) $x!=y$.
-
-	(c) $x=y+1$ or $x=y-1$.
-
-	(h) $x>=y^2$.
+	#parts(
+		columns: 3,
+		a: [$x!=y$.],
+		c: [$x=y+1$ or $x=y-1$.],
+		h: [$x>=y^2$.],
+	)
 ][#parts(
 	a: [The relation is irreflexive, symmetric and transitive.],
 	c: [The relation is irreflexive and symmetric.],
@@ -222,9 +221,11 @@
 #hw("26")[
 	Let $R$ be the relation $R = {(a, b) | a < b}$ on the set of integers. Find
 
-	(a) $R^(-1)$.
-
-	(b) $overline(R)$.
+	#parts(
+		columns: 2,
+		a: [$R^(-1)$.],
+		b: [$overline(R)$.],
+	)
 ][#parts(
 	a: [$R^(-1) = {(b,a) | a < b} = {(a,b) | a > b}$.],
 	b: [$overline(R) = {(a,b) | not(a<b)} = {(a,b) | a >= b}$.],
@@ -249,17 +250,15 @@
 #hw("49")[
 	How many relations are there on a set with $n$ elements that are
 
-	(a) symmetric?
-
-	(b) antisymmetric?
-
-	(c) asymmetric?
-
-	(d) irreflexive?
-
-	(e) reflexive and symmetric?
-
-	(f) neither reflexive nor irreflexive?
+	#parts(
+		columns: 2,
+		a: [symmetric?],
+		b: [antisymmetric?],
+		c: [asymmetric?],
+		d: [irreflexive?],
+		e: [reflexive and symmetric?],
+		f: [neither reflexive nor irreflexive?],
+	)
 ][#parts(
 	a: [$n_a = 2^(C(n,2) + n) = 2^(n(n+1)"/"2)$.],
 	b: [$n_b = 3^(C(n,2)) times 2^n$.],
@@ -291,11 +290,12 @@
 	$
 	Find the matrix representing
 
-	(a) $R^(-1)$.
-
-	(b) $overline(R)$.
-
-	(c) $R^2$.
+	#parts(
+		columns: 3,
+		a: [$R^(-1)$.],
+		b: [$overline(R)$.],
+		c: [$R^2$.],
+	)
 ][$
 	mt_(R^(-1)) &= mat(0,1,1;1,1,0;1,0,1) (=mt_R) quad quad quad
 	mt_(overline(R)) &= mat(1,0,0;0,0,1;0,1,0) quad quad quad
@@ -309,15 +309,14 @@ $]
 	$
 	Find the matrices that represent
 
-	(a) $R_1 union R_2$.
-
-	(b) $R_1 sect R_2$.
-
-	(c) $R_2 circ R_1$.
-
-	(d) $R_1 circ R_1$.
-
-	(e) $R_1 plus.circle R_2$.
+	#parts(
+		columns: 3,
+		a: [$R_1 union R_2$.],
+		b: [$R_1 sect R_2$.],
+		c: [$R_2 circ R_1$.],
+		d: [$R_1 circ R_1$.],
+		e: [$R_1 plus.circle R_2$.],
+	)
 ][$
 	mt_(R_1 union R_2) = mat(0,1,0;1,1,1;1,1,1) quad quad quad
 	mt_(R_1 sect R_2) = mat(0,1,0;0,1,1;1,0,0) quad quad quad

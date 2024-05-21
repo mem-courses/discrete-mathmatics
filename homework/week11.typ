@@ -40,11 +40,13 @@
 		- Suppose that $f$ is a function from $ZZ$ to $ZZ$ with $(f,f) in R$. Then $f(x)-f(x) = 1$ should hold according to the definition of $R$. However, there is clearly a contradiction since $f(x) -f(x)$ is always zero. Therefore, the reflexive property is not satisfied.
 		
 		- Suppose that $(f,g) in R$, then $(g,f) in R$ holds according to the reflexive property of an equivalence relation. This implies that $f(x) - g(x) = 1 and g(x) - f(x) = 1$. But this is clearly a contradiction, as $f(x) - g(x)$ should be equal to $-(g(x) - f(x))$. Therefore, the symmetric property is not satisfied.
+
+		- Suppose that $(f,g) in R$ and $(g,h) in R$. Then we have $f(x)-g(x)=1$ and $g(x)-h(x)=1$. This implies that $f(x)-h(x)=2$, which means $(f,h) in.not R$. Therefore, the transitive property is not satisfied.
 	],
 	d: [
 		Not equivalent.
 
-		- Suppose $(f,g) in R$ holds for a non-zero $C$. Then, similiar to the proof in (c), we can argue that $R$ does not satisfy the symmetric property.
+		- Suppose $(f,g) in R$ holds for a non-zero $C$. Then, similiar to the proof in (c), we can argue that $R$ does not satisfy the symmetric property nor the transitive property.
 	],
 	e: [
 		Not equivalent.
@@ -98,20 +100,19 @@
 #hw("41")[
 	Which of these collections of subsets are partitions of {1, 2, 3, 4, 5, 6}?
 
-	#grid(
+	#parts(
 		columns: 2,
-		parts(
-			a: [${1, 2}, {2, 3, 4}, {4, 5, 6}$],
-			c: [${2, 4, 6}, {1, 3, 5}$],
-		),
-		parts(
-			b: [${1}, {2, 3, 6}, {4}, {5}$],
-			d: [${1, 4, 5}, {2, 6}$],
-		)
+		a: [${1, 2}, {2, 3, 4}, {4, 5, 6}$],
+		b: [${1}, {2, 3, 6}, {4}, {5}$],
+		c: [${2, 4, 6}, {1, 3, 5}$],
+		d: [${1, 4, 5}, {2, 6}$],
 	)
-][#parts(
-	a: [False. As 2 and 4 appears in two subsets.],
-	b: [True.],
-	c: [True.],
-	d: [False. As the union of all subsets is not the original set.],
-)]
+][
+	#parts(
+		columns: 2,
+		a: [False. As 2 and 4 appears in two subsets.],
+		b: [True.],
+		c: [True.],
+		d: [False. As the union of all subsets is not the original set.],
+	)
+]

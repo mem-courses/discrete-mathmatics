@@ -56,8 +56,8 @@
 ][
 	#parts(
 		columns: 2,
-		a: align(center, image("images/2024-05-20-14-29-28.png", width: 64%)),
-		c: align(center, image("images/2024-05-20-14-31-14.png", width: 38%)),
+		a: align(center, image("images/2024-05-20-14-29-28.png", width: 45%)),
+		c: align(center, image("images/2024-05-20-14-31-14.png", width: 27%)),
 	)
 ]
 
