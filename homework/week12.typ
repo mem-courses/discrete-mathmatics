@@ -33,7 +33,7 @@
 		a: [T.],
 		b: [F. Is not reflexive and antisymmetric.],
 		c: [T.],
-		d: [T. Is not reflexive, antisymmetric and transitive.],
+		d: [F. Is not reflexive, antisymmetric and transitive.],
 	)
 ]
 
