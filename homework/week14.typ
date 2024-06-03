@@ -5,7 +5,7 @@
   course: "Discrete Mathmatics",
   course_fullname: "Discrete Mathematics and Application",
   course_code: "211B0010",
-  title: "Homework #14 Graph",
+  title: "Homework #14: Problems on Graphs",
   authors: (
     (
       name: "Yulun WU",
